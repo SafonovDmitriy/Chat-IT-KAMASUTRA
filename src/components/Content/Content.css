@@ -8,7 +8,7 @@
   "n";
 }
 img.back{
-    margin: 2px;
+    /* margin: 2px; */
     grid-area: b;
     width: 100%;
     height: 100%;

@@ -1,13 +1,12 @@
 .Header {
     background-color: darkgreen;
+    
     display: grid;
     grid-template-rows: 165px;
     height: 160px;
     grid-template-columns: 1fr 3fr;
     grid-gap: 5px;
-    grid-template-areas:
-    "logo menu";
-  
+    grid-template-areas: "logo menu";
 }
 
 .Header img {
@@ -15,32 +14,20 @@
     margin-top: 10px;
     grid-area: logo;
     height: 1fr;
-} 
-
-.headerMenu ul{
-   grid-area: menu;
-   padding-top: 45px;
 }
+
+.headerMenu ul {
+    grid-area: menu;
+    padding-top: 45px;
+}
+
 .headerMenu li {
     font-family: Luminari, fantasy;
-font-weight: 400;
-font-stretch: expanded;
-  display: inline-flex;
-   margin-left: 10px;
-   padding: 7px;
-   border: 1px solid black;
-   background-color: white;
-   border-radius: 25px;
-   font-size: 18px;
-
-} 
-
-a:link{
-    color: chartreuse;
-}
-a:visited{
-    color:black
-}
-a:active{
-color: slateblue;
+    font-weight: 400;
+    font-stretch: expanded;
+    display: inline-flex;
+    margin-left: 10px;
+    padding: 7px;
+    border-radius: 25px;
+    font-size: 18px;
 }

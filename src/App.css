@@ -1,28 +1,36 @@
-.App{
-  display: grid;
-  grid-template-rows: 165px 1fr;
+.App {
+    display: grid;
+    grid-template-rows: 165px 1fr;
     grid-template-columns: 1fr 7fr;
-    grid-gap: 10px;
-    grid-template-areas:
-    " h h "
-    " s c "
-}
-.Header{
-  grid-area: h;
-}
-.Sidebar{
-  grid-area: s;
-}
-.Content{
-  grid-area: c;
+    grid-gap: 5px;
+    grid-template-areas: " h h " " s c "
 }
 
-a:link{
-  color: chartreuse;
+.Header {
+    grid-area: h;
 }
-a:visited{
-  color:black
+
+.Sidebar {
+    grid-area: s;
 }
-a:active{
-color: slateblue;
+
+.Content {
+    grid-area: c;
+}
+
+a{
+    text-shadow: red 0 0 5px;
+   
+}
+a:link {
+    color: chartreuse;
+}
+
+a:visited {
+    color: white;
+  
+}
+
+a:active {
+    color: slateblue;
 }

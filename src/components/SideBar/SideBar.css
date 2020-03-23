@@ -1,7 +1,18 @@
-.app-wrapper{
-border: 1px solid black;
-font-family: Luminari, fantasy;
-font-weight: 400;
-font-stretch: expanded;
-font-size: 20px;
+.SideBar-wrapper {
+    border: 1px solid black;
+    font-family: Luminari, fantasy;
+    font-weight: 400;
+    font-size: 21px;
+    background-color: darkgreen;
+}
+
+li a {
+    text-decoration: none;
+    border: rgb(211, 144, 1) solid 2px;
+    border-radius: 25px ;
+    padding: 3px 10px 3px 10px;
+}
+li{
+   margin: 15px; 
+   list-style-type: none;
 }

@@ -1,0 +1,28 @@
+.App{
+  display: grid;
+  grid-template-rows: 165px 1fr;
+    grid-template-columns: 1fr 7fr;
+    grid-gap: 10px;
+    grid-template-areas:
+    " h h "
+    " s c "
+}
+.Header{
+  grid-area: h;
+}
+.Sidebar{
+  grid-area: s;
+}
+.Content{
+  grid-area: c;
+}
+
+a:link{
+  color: chartreuse;
+}
+a:visited{
+  color:black
+}
+a:active{
+color: slateblue;
+}

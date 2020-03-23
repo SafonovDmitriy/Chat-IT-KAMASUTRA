@@ -1,0 +1,18 @@
+.inputs-wrapper{
+border: 1px solid black;
+font-family: Luminari, fantasy;
+font-weight: 400;
+font-stretch: expanded;
+font-size: 20px;
+}
+.StyllButton {
+width: 100px;
+height: 35px;
+margin: 5px;
+background-color: green;
+color: white;
+
+}
+.TextBox{
+
+}

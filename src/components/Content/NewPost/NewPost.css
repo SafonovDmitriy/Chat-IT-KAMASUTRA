@@ -1,0 +1,25 @@
+.NewPost-wrapper{
+    display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px 25px;
+  grid-template-areas: 
+  "h"
+  "t"
+  "b";
+}
+.Title{
+  grid-area: h;
+}
+.inputText{
+grid-area: t;
+background-color: skyblue;
+opacity: 40%;
+border-radius: 25px;
+width: 50%;
+
+
+}
+.sendMessage{
+
+  grid-area: b;
+}

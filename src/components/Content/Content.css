@@ -1,6 +1,5 @@
 .content-wrapper{
-  background-color: rgb(5, 56, 5);
- 
+  background-color: #7d5fff;
     display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 350px 300px 300px;

@@ -1,23 +1,22 @@
-.Header {
+.wrapper {
     background-color: darkgreen;
-    
     display: grid;
-    grid-template-rows: 165px;
     height: 160px;
-    grid-template-columns: 1fr 3fr;
     grid-gap: 5px;
+    grid-template-columns: 175px 1fr;
+    grid-template-rows: 10fr;
     grid-template-areas: "logo menu";
 }
 
-.Header img {
+.wrapper img {
     margin-left: 25px;
     margin-top: 10px;
     grid-area: logo;
-    height: 1fr;
 }
 
 .headerMenu ul {
     grid-area: menu;
+    margin: auto;
     padding-top: 45px;
 }
 
@@ -25,9 +24,8 @@
     font-family: Luminari, fantasy;
     font-weight: 400;
     font-stretch: expanded;
-    display: inline-flex;
-    margin-left: 10px;
     padding: 7px;
     border-radius: 25px;
     font-size: 18px;
+    display: inline-flex;
 }

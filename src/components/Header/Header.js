@@ -2,12 +2,12 @@ import React from 'react';
 
 
 
-import './Header.css'
+import s from './Header.module.css'
 const Header = () => {
-  return <div className="Header">
+  return <div className={s.wrapper}>
     <img alt="" src="https://volkland.com.ua/sites/all/themes/volkland/logo.png" />
     
-    <div className="headerMenu"><ul>
+    <div className={s.headerMenu}><ul>
       <li><a href="#1">Item1</a></li>
       <li><a href="#2">Item2</a></li>
       <li><a href="#3">Item3</a></li>

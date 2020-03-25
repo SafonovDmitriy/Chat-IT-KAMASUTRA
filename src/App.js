@@ -8,12 +8,12 @@ import Content from './components/Content/Content';
 
 function App() {
   return (
-    <div className="container">
+ 
       <div className="App">
         <Header className="Header" />
         <SideBar className="SideBar" />
         <Content className="Content" />
-      </div></div>
+      </div>
   );
 }
 

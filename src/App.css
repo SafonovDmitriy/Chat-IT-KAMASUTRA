@@ -2,8 +2,8 @@
     display: grid;
     grid-template-rows: 165px 1fr;
     grid-template-columns: 1fr 7fr;
-    grid-gap: 5px;
-    grid-template-areas: " h h " " s c "
+    /* grid-gap: 5px; */
+    grid-template-areas: "h" "s c"
 }
 
 .Header {
@@ -18,17 +18,16 @@
     grid-area: c;
 }
 
-a{
+a {
     text-shadow: red 0 0 5px;
-   
 }
+
 a:link {
     color: chartreuse;
 }
 
 a:visited {
     color: white;
-  
 }
 
 a:active {

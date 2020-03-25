@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-import './SideBar.css'
+import s from './SideBar.module.css'
 const SideBar = () => {
-  return <div className="SideBar-wrapper">
+  return <div className={s.wrapper}>
     <ul>
       <li><a href="#1">Profile</a></li>
       <li><a href="#2">Messages</a></li>

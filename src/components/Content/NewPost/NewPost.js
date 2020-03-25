@@ -1,8 +1,8 @@
 import React from 'react';
-import './NewPost.css'
+import s from './NewPost.module.css'
 import { TextBox, StyllButton } from '../../inputs/inputs';
 const NewPost = () => {
-    return <div className="NewPost-wrapper">
+    return <div className={s.wrapper}>
         <h1 className="Title">My posts</h1>
         <TextBox />
         <StyllButton />

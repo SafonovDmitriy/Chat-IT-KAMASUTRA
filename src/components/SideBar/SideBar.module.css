@@ -1,5 +1,5 @@
 .wrapper {
-    border: 1px solid black;
+   display: grid;
     font-family: Luminari, fantasy;
     font-weight: 400;
     font-size: 21px;

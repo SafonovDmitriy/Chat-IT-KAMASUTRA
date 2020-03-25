@@ -1,5 +1,7 @@
 .wrapper{
-  background-color: #7d5fff;
+  background-color: darkgreen;
+  border: 1px solid black;
+  padding: 5px;
     display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 350px 300px 300px;

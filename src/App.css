@@ -4,6 +4,7 @@
     grid-template-columns: 0.6fr 3fr;
     grid-template-areas: "h h" "s c"
 }
+
 .appHeader {
     grid-area: h;
     display: grid;

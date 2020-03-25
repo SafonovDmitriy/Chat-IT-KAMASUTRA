@@ -5,7 +5,7 @@ import s from './SideBar.module.css'
 const SideBar = () => {
   return <div className={s.wrapper}>
     <ul>
-      <li><a href="#1">Profile</a></li>
+      <li><a className={s.active} href="#1">Profile</a></li>
       <li><a href="#2">Messages</a></li>
       <li><a href="#3">News</a></li>
       <li><a href="#4">Music</a></li>

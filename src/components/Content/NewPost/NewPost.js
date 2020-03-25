@@ -4,8 +4,8 @@ import { TextBox, StyllButton } from '../../inputs/inputs';
 const NewPost = () => {
     return <div className={s.wrapper}>
         <h1 className="Title">My posts</h1>
-        <TextBox />
-        <StyllButton />
+        <TextBox value="Text"/>
+        <StyllButton value="Sand massage"/>
     </div>
 }
 export default NewPost;

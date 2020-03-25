@@ -1,20 +1,19 @@
 .App {
     display: grid;
     grid-template-rows: 165px 1fr;
-    grid-template-columns: 1fr 7fr;
-    /* grid-gap: 5px; */
-    grid-template-areas: "h" "s c"
+    grid-template-columns: 0.6fr 3fr;
+    grid-template-areas: "h h" "s c"
 }
 
-.Header {
+.appHeader {
     grid-area: h;
 }
 
-.Sidebar {
+.appSidebar {
     grid-area: s;
 }
 
-.Content {
+.appContent {
     grid-area: c;
 }
 

@@ -7,15 +7,17 @@
 }
 
 .StyllButton {
-    width: 100px;
-    height: 35px;
-    margin: 5px;
-    background-color: green;
+    max-width: 150px;
+    margin-top: 5px;
+    margin-left: 7px;
+    padding: 3px;
+    border-radius: 25px;
+    background-color: blue;
     color: white;
 }
 
 .TextBox {
-    width: 50%;
+    width: 25%;
     height: 50px;
     border: #18dcff 1px solid;
     border-radius: 10px;

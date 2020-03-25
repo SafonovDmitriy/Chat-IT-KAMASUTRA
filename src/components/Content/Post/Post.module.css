@@ -17,10 +17,9 @@ img.avatar {
   grid-area: p;
   border-left: orangered solid 2px;
   padding-left: 10px;
-  text-align: center;
 }
 
-input.like {
+input.buttonlike {
   width: 75px;
   height: 40px;
   margin: 0px;

@@ -15,6 +15,7 @@
 }
 
 .appContent {
+    background-color: darkgreen;
     grid-area: c;
 }
 

@@ -1,8 +1,8 @@
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 75px 60px 25px;
-  grid-template-areas: "h h" "t t" "b b";
+  /* grid-template-columns: 1fr; */
+  grid-template-rows: 75px 60px 40px;
+  grid-template-areas: "h" "t" "b";
 }
 
 .Title {

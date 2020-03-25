@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 200px 1fr;
   /*Колонки  */
-  grid-template-rows: 130px 1fr;
+  grid-template-rows: 108px 1fr;
   grid-template-areas: "a p" "like p";
   margin-top: 10px;
 }
@@ -15,9 +15,8 @@ img.avatar {
 
 .post {
   grid-area: p;
-  background-image: url("https://avatanplus.com/files/resources/mid/57092ba764097153fbd285f2.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  border-left: orangered solid 2px;
+  padding-left: 10px;
   text-align: center;
 }
 

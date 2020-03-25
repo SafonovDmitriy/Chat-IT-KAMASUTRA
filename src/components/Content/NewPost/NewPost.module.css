@@ -1,25 +1,21 @@
-.wrapper{
-    display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px 100px 25px;
-  grid-template-areas: 
-  "h"
-  "t"
-  "b";
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 75px 60px 25px;
+  grid-template-areas: "h h" "t t" "b b";
 }
-.Title{
+
+.Title {
   grid-area: h;
 }
-.inputText{
-grid-area: t;
-background-color: skyblue;
-opacity: 40%;
-border-radius: 25px;
-width: 50%;
 
-
+.inputText {
+  grid-area: t;
+  background-color: skyblue;
+  opacity: 40%;
+  border-radius: 25px;
 }
-.sendMessage{
 
+.sendMessage {
   grid-area: b;
 }

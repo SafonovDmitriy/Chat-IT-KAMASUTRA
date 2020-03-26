@@ -7,7 +7,7 @@
     height: 100%;
 }
 
-li a {
+li a  {
     text-decoration: none;
     border: rgb(211, 144, 1) solid 2px;
     border-radius: 25px;
@@ -18,6 +18,6 @@ li {
     margin: 5px auto 15px auto;
     list-style-type: none;
 }
-a:visited.active{
+a.active{
     color: gold;
 }

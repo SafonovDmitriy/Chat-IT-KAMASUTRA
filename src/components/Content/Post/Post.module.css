@@ -1,10 +1,10 @@
 .wrapper {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 80px 130px 1fr;
   /*Колонки  */
   grid-template-rows: 108px 1fr;
-  grid-template-areas: "a p" "like p";
-  margin-top: 10px;
+  grid-template-areas: "a a p" "like count p";
+  margin-bottom: 10px;
 }
 
 img.avatar {
@@ -20,13 +20,17 @@ img.avatar {
 }
 
 input.buttonlike {
-  width: 75px;
-  height: 40px;
-  margin: 0px;
-  border-radius: 25px;
+  grid-area: like;
+}
+
+input.buttonlike, .countLike {
+  text-align: center;
+  font-size: 18px;
   border: 1px solid #ff7675;
+  max-width: 120px;
+  max-height: 30px;
+  border-radius: 25px;
   color: #81ecec;
   background-color: black;
-  font-size: 18px;
-  grid-area: like;
+  margin: auto 0px auto 0px;
 }

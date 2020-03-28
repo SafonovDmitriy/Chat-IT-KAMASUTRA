@@ -6,8 +6,8 @@ import MessageList from './MessageList/MessageList';
 
 const Dialogs = (props) => {
     return <div className={s.wrapper}>
-       <DialogList className={s.NamesList}/>
-       <MessageList className={s.MessageList}/>
+        <DialogList className={s.NamesList} DialogData={props.DialogePage.DialogData} />
+        <MessageList className={s.MessageList} arrMessage={props.DialogePage.arrMessage} />
     </div>
 }
 export default Dialogs;

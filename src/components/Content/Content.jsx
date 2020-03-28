@@ -3,14 +3,15 @@ import s from './Content.module.css'
 import Profile from '../Profile/Profile';
 import NewPost from './NewPost/NewPost';
 import Post from './Post/Post';
-const Content = () => {
+const Content = (props) => {
+    
+    let SetArrPost = props.ProfilePage.arrPost.map(Posts => <Post id={Posts.id} message={Posts.post} like={Posts.like} />)
     return <div className={s.wrapper}>
         <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
-        <Profile className={s.Profile} />
+        <Profile className={s.Profile} ProfileDate={props.ProfilePage.ProfileDate} />
         <NewPost className={s.NewPost} />
         <div className={s.Post}>
-            <Post message="Hi,how are you?" like={5} />
-            <Post message="It`s my first post" like={6}/>
+            {SetArrPost}
 
         </div>
     </div>

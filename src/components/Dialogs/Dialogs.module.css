@@ -1,6 +1,6 @@
 .wrapper{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 150px 1fr;
   grid-template-areas: "n m";
 }
 .NamesList{

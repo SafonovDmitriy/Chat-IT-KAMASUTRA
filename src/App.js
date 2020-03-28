@@ -8,18 +8,19 @@ import { Route, BrowserRouter } from 'react-router-dom';
 
 
 
-function App() {
+function App(props) {
+  let state = props.state
   return (
     <BrowserRouter>
       <div className="App">
         <div className="appHeader"><Header /></div>
         <div className="appSideBar">  <SideBar /></div>
         <div className="appContent">
-          <Route path="/profile" component={Content} />
-          <Route path="/messages" component={Dialogs} />
-          <Route path="/news"  />
-          <Route path="/music"  />
-          <Route path="/setting"  />
+          <Route path="/profile" render={() => <Content ProfilePage={state.ProfilePage} />} />
+          <Route path="/messages" render={() => <Dialogs DialogePage={state.DialogePage} />} />
+          <Route path="/news" />
+          <Route path="/music" />
+          <Route path="/setting" />
 
         </div>
       </div>

@@ -19,12 +19,9 @@
     grid-area: c;
 }
 
-a {
-    text-shadow: red 0 0 5px;
-}
 
 a:link {
-    color: chartreuse;
+    color: white;
 }
 
 a:visited {

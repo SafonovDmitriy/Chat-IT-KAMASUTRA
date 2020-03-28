@@ -1,3 +1,11 @@
 .wrapper{
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "n m";
+}
+.NamesList{
+    grid-area: n;
+}
+.MessageList{
+    grid-area: m;
 }

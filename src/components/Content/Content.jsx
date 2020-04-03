@@ -3,13 +3,14 @@ import s from './Content.module.css'
 import Profile from '../Profile/Profile';
 import NewPost from './NewPost/NewPost';
 import Post from './Post/Post';
+
 const Content = (props) => {
-    
-    let SetArrPost = props.ProfilePage.arrPost.map(Posts => <Post arrPost={Posts} ProfilePage={props.ProfilePage}  activeIDUser={props.activeIDUser}/>)
+
+    let SetArrPost = props.ProfilePage.arrPost.map(Posts => <Post arrPost={Posts} ProfilePage={props.ProfilePage} activeIDUser={props.activeIDUser} LikeforPost={props.LikeforPost} />)
     return <div className={s.wrapper}>
         <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
         <Profile className={s.Profile} ProfileDate={props.ProfilePage.ProfileDate} />
-        <NewPost className={s.NewPost} activeIDUser={props.activeIDUser } addPost={props.addPost}/>
+        <NewPost className={s.NewPost} activeIDUser={props.activeIDUser} addPost={props.addPost} />
         <div className={s.Post}>
             {SetArrPost}
 

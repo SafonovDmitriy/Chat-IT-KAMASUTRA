@@ -20,7 +20,7 @@ img.avatar {
   padding-left: 10px;
 }
 
-input.buttonlike {
+.buttonlike {
   grid-area: like;
 }
 
@@ -34,4 +34,9 @@ input.buttonlike, .countLike {
   color: #81ecec;
   background-color: black;
   margin: auto 0px auto 0px;
+}
+
+.ico{
+  color: yellow;
+  transition: 0.2s;
 }

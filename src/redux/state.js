@@ -23,8 +23,15 @@ let state = {
     }
 
 }
+
+export let LikeforPost = (idPost, likePost) => {
+
+    state.ProfilePage.arrPost.map((Post) => state.ProfilePage.arrPost[Post.id].like = likePost )
+    rerenderTree();
+}
+
 export let SaveActiveDialog = (idDialog) => {
-    state.activeDialog=idDialog
+    state.activeDialog = idDialog
     rerenderTree();
 }
 export let SendMessages = (Message) => {

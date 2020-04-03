@@ -8,12 +8,20 @@
 
 .StyllButton {
     margin-left: auto;
-    max-width: 150px;
     margin-top: 5px;
+    max-width: 150px;
     padding: 7px;
     border-radius: 25px;
-    background-color: blue;
+    background-color: black;
+    font-family: consolas;
     color: white;
+    transition: 0.2s;
+}
+
+.StyllButton:hover {
+    color: red;
+    background: #18dcff;
+    box-shadow: 0 0 10px #18dcff, 0 0 40px #18dcff, 0 0 80px #18dcff;
 }
 
 .TextBox {
@@ -25,4 +33,10 @@
     background: none;
     text-align: center;
     margin: 5px auto 5px 5px;
+    transition: 1s;
+}
+
+.TextBox:hover {
+    background: linear-gradient(130deg, transparent, #18dcff);
+  
 }

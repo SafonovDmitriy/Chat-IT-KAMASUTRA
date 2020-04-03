@@ -16,8 +16,8 @@ function App(props) {
         <div className="appHeader"><Header /></div>
         <div className="appSideBar">  <SideBar /></div>
         <div className="appContent">
-          <Route path="/profile" render={() => <Content ProfilePage={state.ProfilePage} />} />
-          <Route path="/messages" render={() => <Dialogs DialogePage={state.DialogePage} />} />
+          <Route path="/profile" render={() => <Content ProfilePage={state.ProfilePage} activeIDUser={state.activeIDUser} addPost={props.addPost}/>} />
+          <Route path="/messages" render={() => <Dialogs DialogePage={state.DialogePage} activeIDUser={state.activeIDUser}/>} />
           <Route path="/news" />
           <Route path="/music" />
           <Route path="/setting" />

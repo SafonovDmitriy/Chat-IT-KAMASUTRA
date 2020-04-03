@@ -10,7 +10,7 @@ const Profile = (props) => {
             <h1>Name: {props.ProfileDate[id].user}</h1>
             <p>Date of Birth: {props.ProfileDate[id].dateOfBirth}</p>
             <p>City: {props.ProfileDate[id].city}</p>
-            <p>Web Site: {props.ProfileDate[id].website}</p>
+            <p>Web Site: <a href={props.ProfileDate[id].website}>{props.ProfileDate[id].website}</a></p>
         </div>
     </div>
 }

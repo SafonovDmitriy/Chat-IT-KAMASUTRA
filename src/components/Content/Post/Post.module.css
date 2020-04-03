@@ -10,6 +10,7 @@
 img.avatar {
   grid-area: a;
   width: 185px;
+  height: 105px;
   border-radius: 25px;
 }
 

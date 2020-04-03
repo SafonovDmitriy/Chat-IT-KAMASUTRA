@@ -2,7 +2,8 @@
     display: grid;
     grid-template-rows: 165px 1fr;
     grid-template-columns: 0.6fr 3fr;
-    grid-template-areas: "h h" "s c"
+    grid-template-areas: "h h" "s c";
+    background-color: darkgreen;
 }
 
 .appHeader {

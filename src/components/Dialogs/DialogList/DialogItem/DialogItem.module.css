@@ -1,14 +1,23 @@
-.wrapper{
+.wrapper {
   border: 1px solid red;
   margin-bottom: 5px;
   background-color: slateblue;
   padding: 5px;
-
+  border-radius: 25px;
 }
-a{
+
+a {
   text-decoration: none;
 }
-a.active{
+
+a.active {
   color: red;
-  text-decoration: underline  gold;
+  text-decoration: underline gold;
+  transition: 0.2s;
+}
+
+.wrapper:hover a, .wrapper:hover {
+  background-color: gold;
+  color: red;
+  transition: 0.2s;
 }

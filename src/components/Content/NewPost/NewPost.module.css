@@ -9,14 +9,12 @@
 .Title {
   grid-area: h;
 }
-
-.inputText {
+.TextBox {
   grid-area: t;
-  background-color: skyblue;
-  opacity: 40%;
-  border-radius: 25px;
 }
-
 .sendMessage {
   grid-area: b;
 }
+.SendPost{
+  float: right;
+} 

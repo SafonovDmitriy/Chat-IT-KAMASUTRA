@@ -20,4 +20,5 @@ li {
 }
 a.active{
     color: gold;
+    transition: 1.5s;
 }

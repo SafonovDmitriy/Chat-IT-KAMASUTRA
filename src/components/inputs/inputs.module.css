@@ -7,9 +7,9 @@
 }
 
 .StyllButton {
-    margin-left: auto;
-    margin-top: 5px;
-    max-width: 150px;
+    margin: 5px auto 15px auto;
+    min-width: 100px;
+    min-height: 35px;
     padding: 7px;
     border-radius: 25px;
     background-color: black;
@@ -32,11 +32,10 @@
     border-radius: 10px;
     background: none;
     text-align: center;
-    margin: 5px auto 5px 5px;
+    margin: 5px auto 15px auto;
     transition: 1s;
 }
 
 .TextBox:hover {
     background: linear-gradient(130deg, transparent, #18dcff);
-  
 }

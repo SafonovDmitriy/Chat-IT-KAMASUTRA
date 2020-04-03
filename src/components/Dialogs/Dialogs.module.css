@@ -1,11 +1,20 @@
-.wrapper{
+.wrapper {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  grid-template-areas: "n m";
+  grid-template-columns: 150px 500px;
+  grid-template-areas: "n m" "n s";
 }
-.NamesList{
-    grid-area: n;
+
+.NamesList {
+  grid-area: n;
 }
-.MessageList{
-    grid-area: m;
+
+.MessageList {
+  grid-area: m;
+}
+
+.Sender {
+  grid-area: s;
+}
+.SendButtom{
+  float: right;
 }

@@ -1,4 +1,16 @@
-.wrapper{
-  border: 1px solid green;
+.wrapper {
   padding: 5px;
+  border-bottom:1px solid green ;
+  font-family: fantasy;
+}
+
+.left {
+  text-align: left;
+  color: red;
+  padding-left:10px ;
+}
+.right{
+  text-align: right;
+  color: green;
+  padding-right:10px ;
 }

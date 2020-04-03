@@ -10,14 +10,15 @@ import { Route, BrowserRouter } from 'react-router-dom';
 
 function App(props) {
   let state = props.state
+
   return (
     <BrowserRouter>
       <div className="App">
         <div className="appHeader"><Header /></div>
-        <div className="appSideBar">  <SideBar /></div>
+        <div className="appSideBar">  <SideBar activeDialog={state.activeDialog}/></div>
         <div className="appContent">
-          <Route path="/profile" render={() => <Content ProfilePage={state.ProfilePage} activeIDUser={state.activeIDUser} addPost={props.addPost}/>} />
-          <Route path="/messages" render={() => <Dialogs DialogePage={state.DialogePage} activeIDUser={state.activeIDUser}/>} />
+          <Route path="/profile" render={() => <Content ProfilePage={state.ProfilePage} activeIDUser={state.activeIDUser} addPost={props.addPost} />} />
+          <Route path="/messages" render={() => <Dialogs state={state} SendMessages={props.SendMessages} SaveActiveDialog={props.SaveActiveDialog}/>} />
           <Route path="/news" />
           <Route path="/music" />
           <Route path="/setting" />

@@ -6,7 +6,7 @@ import MessageItem from './MessageItem/MessageItem';
 const MessageList = (props) => {
   
     
-    let setMessageList=props.arrMessage.map(item=><MessageItem message={item.message}/>)
+    let setMessageList=props.state.DialogePage.arrMessage.map(item=><MessageItem state={props.state} item={item}/>)
     return <div className={s.wrapper}>
       {setMessageList}
     </div>

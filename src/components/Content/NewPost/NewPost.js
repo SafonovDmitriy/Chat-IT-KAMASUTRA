@@ -12,9 +12,13 @@ const NewPost = (props) => {
     }
 
     return <div className={s.wrapper}>
-        <h1 className="Title">My posts</h1>
-        <TextBox value="Text" refs={newPostElement} />
-        <StyllButton value="Sand massage" onClick={addPosts} />
+        <h1 className={s.Title}>My posts</h1>
+        <div>
+            <TextBox className={s.TextBox} value="Text" refs={newPostElement} />
+            <div className={s.SendPost}>
+                <StyllButton className={s.sendMessage} value="Send Post" onClick={addPosts} />
+            </div>
+        </div>
     </div>
 }
 export default NewPost;

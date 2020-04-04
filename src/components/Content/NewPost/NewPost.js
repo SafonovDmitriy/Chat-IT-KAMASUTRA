@@ -5,18 +5,12 @@ const NewPost = (props) => {
 
     let newPostElement = React.createRef()
 
-    let addPosts = () => {
-        let text = newPostElement.current.value
-        props.addPost(text);
-        newPostElement.current.value = "";
-    }
-
     return <div className={s.wrapper}>
         <h1 className={s.Title}>My posts</h1>
         <div>
-            <TextBox className={s.TextBox} value="Text" refs={newPostElement} />
+            <TextBox className={s.TextBox} placeholder="Text" value={props.NewPostText} refs={newPostElement} onChange={()=>props.updatePostText(newPostElement.current.value)} />
             <div className={s.SendPost}>
-                <StyllButton className={s.sendMessage} value="Send Post" onClick={addPosts} />
+                <StyllButton className={s.sendMessage} value="Send Post" onClick={props.addPost} />
             </div>
         </div>
     </div>

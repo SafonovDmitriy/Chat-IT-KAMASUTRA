@@ -4,27 +4,22 @@ import { FaRegThumbsUp } from 'react-icons/fa';
 const Post = (props) => {
     let liker = false;
     let funcLike = () => {
-       if(liker === false) {
-        liker = true ; 
-        props.LikeforPost(props.arrPost.id,props.arrPost.like+1);
+        
+        props.LikeforPost(props.Posts.id)
+        
 
-       }else{
-        liker = false;
-        props.LikeforPost(props.arrPost.id,props.arrPost.like-1);
-       } 
-       
-       
+
     }
     return <div className={s.wrapper}>
 
-        <img className={s.avatar} alt="" src={props.ProfilePage.ProfileDate[props.arrPost.autor].avatar} />
-        <p className={s.post}> {props.arrPost.post} </p>
+        <img className={s.avatar} alt="" src={props.ProfilePage.ProfileDate[props.Posts.autor].avatar} />
+        <p className={s.post}> {props.Posts.post} </p>
         <div className={s.buttonlike}>
             <FaRegThumbsUp className={liker === true ? s.ico : ''} onClick={funcLike} />
         </div>
 
 
-        <p className={s.countLike}> Count Like: {props.arrPost.like}</p>
+        <p className={s.countLike}> Count Like:{props.Posts.likes.length} </p>
     </div>
 }
 export default Post;

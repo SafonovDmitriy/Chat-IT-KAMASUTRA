@@ -9,9 +9,10 @@ let state = {
             { id: 2, user: `name 3`, dateOfBirth: `31`, city: `Zaporozhye`, website: "http://localhost:3000/profile", avatar: "https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg" },
         ],
         arrPost: [
-            { id: 0, autor: 0, post: "Hi,how are you?", like: 5 },
-            { id: 1, autor: 1, post: "It`s my first post", like: 6 }
-        ]
+            { id: 0, autor: 0, post: "Hi,how are you?", like: 5, likes: [{ id: 0 }, { id: 2 }] },
+            { id: 1, autor: 1, post: "It`s my first post", like: 6, likes: [{ id: 1 }] }
+        ],
+        NewPostText: "",
     },
     DialogePage: {
         arrMessage: [
@@ -24,9 +25,19 @@ let state = {
 
 }
 
-export let LikeforPost = (idPost, likePost) => {
 
-    state.ProfilePage.arrPost.map((Post) => state.ProfilePage.arrPost[Post.id].like = likePost )
+export let updatePostText = (text) => {
+    state.ProfilePage.NewPostText = text;
+    rerenderTree();
+}
+export let LikeforPost = (idPost) => {
+    let like = { id: state.activeIDUser }
+    let newArr = []
+    let boolLike = false;
+    state.ProfilePage.arrPost[idPost].likes.map((post) => {
+        state.activeIDUser === post.id ? boolLike = true : newArr.push(post);
+    })
+    boolLike === false ? state.ProfilePage.arrPost[idPost].likes.push(like) : state.ProfilePage.arrPost[idPost].likes = newArr;
     rerenderTree();
 }
 
@@ -51,10 +62,11 @@ export let addPost = (PostMassage) => {
         let NewItem = {
             id: state.ProfilePage.arrPost.length,
             autor: state.activeIDUser,
-            post: String(PostMassage),
+            post: state.ProfilePage.NewPostText,
             like: 0
         }
         state.ProfilePage.arrPost.push(NewItem);
+        state.ProfilePage.NewPostText = "";
         rerenderTree();
     }
 }

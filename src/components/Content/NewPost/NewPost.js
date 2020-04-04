@@ -8,9 +8,17 @@ const NewPost = (props) => {
     return <div className={s.wrapper}>
         <h1 className={s.Title}>My posts</h1>
         <div>
-            <TextBox className={s.TextBox} placeholder="Text" value={props.NewPostText} refs={newPostElement} onChange={()=>props.updatePostText(newPostElement.current.value)} />
+            <TextBox className={s.TextBox}
+                placeholder="Text Post"
+                value={props.NewPostText}
+                refs={newPostElement}
+                onChange={()=>props.updatePostText(newPostElement.current.value)}
+            />
             <div className={s.SendPost}>
-                <StyllButton className={s.sendMessage} value="Send Post" onClick={props.addPost} />
+                <StyllButton className={s.sendMessage}
+                    value="Send Post"
+                    onClick={props.addPost}
+                />
             </div>
         </div>
     </div>

@@ -9,12 +9,13 @@ let state = {
             { id: 2, user: `name 3`, dateOfBirth: `31`, city: `Zaporozhye`, website: "http://localhost:3000/profile", avatar: "https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg" },
         ],
         arrPost: [
-            { id: 0, autor: 0, post: "Hi,how are you?", like: 5, likes: [{ id: 0 }, { id: 2 }] },
-            { id: 1, autor: 1, post: "It`s my first post", like: 6, likes: [{ id: 1 }] }
+            { id: 0, autor: 0, post: "Hi,how are you?", likes: [{ id: 0 }, { id: 2 }] },
+            { id: 1, autor: 1, post: "It`s my first post", likes: [{ id: 1 }] }
         ],
         NewPostText: "",
     },
     DialogePage: {
+        NewMessageText: "",
         arrMessage: [
             { id: 0, sender: 0, recipient: 1, message: "How" },
             { id: 1, sender: 1, recipient: 0, message: "are" },
@@ -28,6 +29,10 @@ let state = {
 
 export let updatePostText = (text) => {
     state.ProfilePage.NewPostText = text;
+    rerenderTree();
+}
+export let updateMessageText = (text) => {
+    state.DialogePage.NewMessageText = text;
     rerenderTree();
 }
 export let LikeforPost = (idPost) => {
@@ -45,30 +50,34 @@ export let SaveActiveDialog = (idDialog) => {
     state.activeDialog = idDialog
     rerenderTree();
 }
-export let SendMessages = (Message) => {
-    let NewMessage = {
-        id: state.DialogePage.arrMessage.length,
-        sender: state.activeIDUser,
-        recipient: state.activeDialog,
-        message: Message
+export let SendMessages = () => {
+    if (state.DialogePage.NewMessageText !== "" & state.activeDialog !== -1) {
+        let NewMessage = {
+            id: state.DialogePage.arrMessage.length,
+            sender: state.activeIDUser,
+            recipient: state.activeDialog,
+            message: state.DialogePage.NewMessageText
+        }
+        state.DialogePage.arrMessage.push(NewMessage);
+        state.DialogePage.NewMessageText = ""
+        rerenderTree();
     }
-    state.DialogePage.arrMessage.push(NewMessage);
-    rerenderTree();
+
 }
 
-export let addPost = (PostMassage) => {
+export let addPost = () => {
 
-    if (PostMassage !== "") {
+    if (state.ProfilePage.NewPostText !== "") {
         let NewItem = {
             id: state.ProfilePage.arrPost.length,
             autor: state.activeIDUser,
             post: state.ProfilePage.NewPostText,
-            like: 0
+            likes: []
         }
         state.ProfilePage.arrPost.push(NewItem);
         state.ProfilePage.NewPostText = "";
         rerenderTree();
-    }
+    } return null;
 }
 
 export default state

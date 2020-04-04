@@ -6,16 +6,28 @@ import { TextBox, StyllButton } from '../inputs/inputs';
 
 
 const Dialogs = (props) => {
-    let newPostElement = React.createRef()
+    let newElement = React.createRef()
     let SendMessage = () => {
-      props.SendMessages(newPostElement.current.value);
-      newPostElement.current.value=""
+        props.SendMessages(newElement.current.value);
+        newElement.current.value = ""
     }
     return <div className={s.wrapper}>
-        <DialogList className={s.NamesList} state={props.state} SaveActiveDialog={props.SaveActiveDialog}/>
-        <MessageList className={s.MessageList} state={props.state} />
+        <DialogList className={s.NamesList}
+            state={props.state}
+            SaveActiveDialog={props.SaveActiveDialog}
+        />
+
+        <MessageList className={s.MessageList}
+            state={props.state}
+        />
+
         <div className={s.Sender}>
-            <TextBox value="Text message" refs={newPostElement} />
+            <TextBox
+                value={props.state.DialogePage.NewMessageText}
+                placeholder="Send Message"
+                refs={newElement}
+                onChange={()=>props.updateMessageText(newElement.current.value)}
+            />
             <div className={s.SendButtom}>
                 <StyllButton value="Sand massage" onClick={SendMessage} />
             </div>

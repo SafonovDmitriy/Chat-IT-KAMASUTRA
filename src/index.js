@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import state, { addPost, SendMessages, SaveActiveDialog, LikeforPost, updatePostText,updateMessageText } from './redux/state';
+import state, { addPost, SendMessages, SaveActiveDialog, LikeforPost, updatePostText,updateMessageText,subscribe } from './redux/state';
 
 
 export let rerenderTree = () => {
@@ -18,5 +18,6 @@ export let rerenderTree = () => {
     />, document.getElementById('root'));
 }
 rerenderTree();
+subscribe(rerenderTree);
 
 serviceWorker.unregister();

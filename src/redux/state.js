@@ -1,4 +1,4 @@
-import { rerenderTree } from "./../render"
+
 let state = {
     activeIDUser: 0,
     activeDialog: -1,
@@ -27,15 +27,15 @@ let state = {
 }
 
 
-export let updatePostText = (text) => {
+export const updatePostText = (text) => {
     state.ProfilePage.NewPostText = text;
     rerenderTree();
 }
-export let updateMessageText = (text) => {
+export const updateMessageText = (text) => {
     state.DialogePage.NewMessageText = text;
     rerenderTree();
 }
-export let LikeforPost = (idPost) => {
+export const LikeforPost = (idPost) => {
     let like = { id: state.activeIDUser }
     let newArr = []
     let boolLike = false;
@@ -46,11 +46,11 @@ export let LikeforPost = (idPost) => {
     rerenderTree();
 }
 
-export let SaveActiveDialog = (idDialog) => {
+export const SaveActiveDialog = (idDialog) => {
     state.activeDialog = idDialog
     rerenderTree();
 }
-export let SendMessages = () => {
+export const SendMessages = () => {
     if (state.DialogePage.NewMessageText !== "" & state.activeDialog !== -1) {
         let NewMessage = {
             id: state.DialogePage.arrMessage.length,
@@ -65,7 +65,7 @@ export let SendMessages = () => {
 
 }
 
-export let addPost = () => {
+export const addPost = () => {
 
     if (state.ProfilePage.NewPostText !== "") {
         let NewItem = {
@@ -79,5 +79,9 @@ export let addPost = () => {
         rerenderTree();
     } return null;
 }
-
+let rerenderTree = () => {
+}
+export const subscribe = (observer) => {
+    rerenderTree = observer;
+}
 export default state

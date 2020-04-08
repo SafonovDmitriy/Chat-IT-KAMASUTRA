@@ -4,7 +4,10 @@ import { TextBox, StyllButton } from '../../inputs/inputs';
 const NewPost = (props) => {
 
     let newPostElement = React.createRef()
-
+let sendPost=()=>{
+    props.dispatch({type:'ADD-POST'});
+    newPostElement.current.value=""
+}
     return <div className={s.wrapper}>
         <h1 className={s.Title}>My posts</h1>
         <div>
@@ -12,12 +15,12 @@ const NewPost = (props) => {
                 placeholder="Text Post"
                 value={props.NewPostText}
                 refs={newPostElement}
-                onChange={()=>props.updatePostText(newPostElement.current.value)}
+                onChange={()=>props.dispatch({type:'UPDATE-POST-TEXT',value:newPostElement.current.value})}
             />
             <div className={s.SendPost}>
                 <StyllButton className={s.sendMessage}
                     value="Send Post"
-                    onClick={props.addPost}
+                    onClick={sendPost}
                 />
             </div>
         </div>

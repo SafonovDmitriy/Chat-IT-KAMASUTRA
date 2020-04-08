@@ -5,13 +5,11 @@ import MessageItem from './MessageItem/MessageItem';
 
 const MessageList = (props) => {
 
-
-  let setMessageList = props.state.DialogePage.arrMessage.map(item => <MessageItem
-    state={props.state}
-    item={item}
-  />)
   return <div className={s.wrapper}>
-    {setMessageList}
+    {props.state.DialogePage.arrMessage.map((item) => <MessageItem
+      state={props.state}
+      item={item}
+    />)}
   </div>
 }
 export default MessageList;

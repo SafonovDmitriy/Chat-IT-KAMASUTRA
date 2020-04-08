@@ -8,14 +8,8 @@ import store from './redux/state';
 
 export let rerenderTree = () => {
     ReactDOM.render(<App
-
         state={store.getState()}
-        addPost={store.addPost.bind(store)}
-        SendMessages={store.SendMessages.bind(store)}
-        SaveActiveDialog={store.SaveActiveDialog.bind(store)}
-        LikeforPost={store.LikeforPost.bind(store)}
-        updatePostText={store.updatePostText.bind(store)}
-        updateMessageText={store.updateMessageText.bind(store)}
+        dispatch={store.dispatch.bind(store)}
     />, document.getElementById('root'));
 }
 rerenderTree();

@@ -19,22 +19,17 @@ function App(props) {
       <div className="App">
 
         <div className="appHeader"><Header /></div>
-        
+
         <div className="appSideBar">  <SideBar activeDialog={state.activeDialog} /></div>
         <div className="appContent">
           <Route path="/profile" render={() => <Content
-            updatePostText={props.updatePostText}
-            ProfilePage={state.ProfilePage}
-            activeIDUser={state.activeIDUser}
-            addPost={props.addPost}
-            LikeforPost={props.LikeforPost}
-            NewPostText={state.ProfilePage.NewPostText}
+            state={state}
+            dispatch={props.dispatch}
+
           />} />
           <Route path="/messages" render={() => <Dialogs
             state={state}
-            SendMessages={props.SendMessages}
-            SaveActiveDialog={props.SaveActiveDialog}
-            updateMessageText={props.updateMessageText}
+            dispatch={props.dispatch}
           />} />
           <Route path="/news" />
           <Route path="/music" />

@@ -25,6 +25,61 @@ let store = {
         }
 
     },
+
+
+    dispatch(active) {
+        if (active.type === "UPDATE-MESSAGE-TEXT") {
+            this._state.DialogePage.NewMessageText = active.value;
+            this._rerenderTree();
+        }
+
+        else if (active.type === "ADD-POST") {
+
+            if (this._state.ProfilePage.NewPostText !== "") {
+                let NewItem = {
+                    id: this._state.ProfilePage.arrPost.length,
+                    autor: this._state.activeIDUser,
+                    post: this._state.ProfilePage.NewPostText,
+                    likes: []
+                }
+                this._state.ProfilePage.arrPost.push(NewItem);
+                this._state.ProfilePage.NewPostText = "";
+                this._rerenderTree();
+            } return null;
+
+        } else if (active.type === "UPDATE-POST-TEXT") {
+            this._state.ProfilePage.NewPostText = active.value;
+            this._rerenderTree();
+
+        } else if (active.type === "LIKE-FOR-POST") {
+            let like = { id: this._state.activeIDUser }
+            let newArr = []
+            let boolLike = false;
+            this._state.ProfilePage.arrPost[active.value].likes.map((post) => {
+                this._state.activeIDUser === post.id ? boolLike = true : newArr.push(post);
+            })
+            boolLike === false ? this._state.ProfilePage.arrPost[active.value].likes.push(like) : this._state.ProfilePage.arrPost[active.value].likes = newArr;
+            this._rerenderTree();
+
+        } else if (active.type === "SAVE-ACTIVE-DIALOG") {
+            this._state.activeDialog = active.value
+            this._rerenderTree();
+        }
+
+        else if (active.type === "SAND-MASSAGE") {
+            if (this._state.DialogePage.NewMessageText !== "" & this._state.activeDialog !== -1) {
+                let NewMessage = {
+                    id: this._state.DialogePage.arrMessage.length,
+                    sender: this._state.activeIDUser,
+                    recipient: this._state.activeDialog,
+                    message: this._state.DialogePage.NewMessageText
+                }
+                this._state.DialogePage.arrMessage.push(NewMessage);
+                this._state.DialogePage.NewMessageText = ""
+                this._rerenderTree();
+            }
+        }
+        this._rerenderTree();},
     getState() {
         return this._state
     },
@@ -32,59 +87,6 @@ let store = {
     },
     subscribe(observer) {
         this._rerenderTree = observer;
-    },
-    updatePostText(text) {
-        this._state.ProfilePage.NewPostText = text;
-        this._rerenderTree();
-    },
-    updateMessageText(text) {
-        this._state.DialogePage.NewMessageText = text;
-        this._rerenderTree();
-    },
-    LikeforPost(idPost) {
-        let like = { id: this._state.activeIDUser }
-        let newArr = []
-        let boolLike = false;
-        this._state.ProfilePage.arrPost[idPost].likes.map((post) => {
-            this._state.activeIDUser === post.id ? boolLike = true : newArr.push(post);
-        })
-        boolLike === false ? this._state.ProfilePage.arrPost[idPost].likes.push(like) : this._state.ProfilePage.arrPost[idPost].likes = newArr;
-        this._rerenderTree();
-    },
-
-    SaveActiveDialog(idDialog) {
-
-        this._state.activeDialog = idDialog
-        this._rerenderTree();
-    },
-    SendMessages() {
-        if (this._state.DialogePage.NewMessageText !== "" & this._state.activeDialog !== -1) {
-            let NewMessage = {
-                id: this._state.DialogePage.arrMessage.length,
-                sender: this._state.activeIDUser,
-                recipient: this._state.activeDialog,
-                message: this._state.DialogePage.NewMessageText
-            }
-            this._state.DialogePage.arrMessage.push(NewMessage);
-            this._state.DialogePage.NewMessageText = ""
-            this._rerenderTree();
-        }
-
-    },
-
-    addPost() {
-
-        if (this._state.ProfilePage.NewPostText !== "") {
-            let NewItem = {
-                id: this._state.ProfilePage.arrPost.length,
-                autor: this._state.activeIDUser,
-                post: this._state.ProfilePage.NewPostText,
-                likes: []
-            }
-            this._state.ProfilePage.arrPost.push(NewItem);
-            this._state.ProfilePage.NewPostText = "";
-            this._rerenderTree();
-        } return null;
     },
 }
 

@@ -8,13 +8,13 @@ import { TextBox, StyllButton } from '../inputs/inputs';
 const Dialogs = (props) => {
     let newElement = React.createRef()
     let SendMessage = () => {
-        props.SendMessages(newElement.current.value);
+        props.dispatch({ type: "SAND-MASSAGE", value: newElement.current.value });
         newElement.current.value = ""
     }
     return <div className={s.wrapper}>
         <DialogList className={s.NamesList}
             state={props.state}
-            SaveActiveDialog={props.SaveActiveDialog}
+            dispatch={props.dispatch}
         />
 
         <MessageList className={s.MessageList}
@@ -26,7 +26,7 @@ const Dialogs = (props) => {
                 value={props.state.DialogePage.NewMessageText}
                 placeholder="Send Message"
                 refs={newElement}
-                onChange={()=>props.updateMessageText(newElement.current.value)}
+                onChange={() => props.dispatch({ type: "UPDATE-MESSAGE-TEXT", value: newElement.current.value })}
             />
             <div className={s.SendButtom}>
                 <StyllButton value="Sand massage" onClick={SendMessage} />

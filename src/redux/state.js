@@ -79,7 +79,8 @@ let store = {
                 this._rerenderTree();
             }
         }
-        this._rerenderTree();},
+        this._rerenderTree();
+    },
     getState() {
         return this._state
     },
@@ -88,7 +89,26 @@ let store = {
     subscribe(observer) {
         this._rerenderTree = observer;
     },
+
 }
+export const updatePostTextActionCreator = (text) => ({
+    type: 'UPDATE-POST-TEXT',
+    value: text
+})
+export const addPostActionCreator = () => ({ type: 'ADD-POST' })
+export const likeForPostActiveCreator = () => ({ type: "LIKE-FOR-POST" })
+export const updateMessagePostActiveCreator = (text) => ({
+    type: "UPDATE-MESSAGE-TEXT",
+    value: text
+})
+export const sandMassageActiveCreator = (message) => ({
+    type: "SAND-MASSAGE",
+    value: message
+})
+export const saveActiveDialogActiveCreator = (value) => ({
+    type: "SAVE-ACTIVE-DIALOG",
+    value: value
+})
 
 
 

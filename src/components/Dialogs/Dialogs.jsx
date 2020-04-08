@@ -3,12 +3,14 @@ import s from './Dialogs.module.css'
 import DialogList from './DialogList/DialogList';
 import MessageList from './MessageList/MessageList';
 import { TextBox, StyllButton } from '../inputs/inputs';
+import { updateMessagePostActiveCreator } from '../../redux/state';
+import { sandMassageActiveCreator } from './../../redux/state';
 
 
 const Dialogs = (props) => {
     let newElement = React.createRef()
     let SendMessage = () => {
-        props.dispatch({ type: "SAND-MASSAGE", value: newElement.current.value });
+        props.dispatch(sandMassageActiveCreator(newElement.current.value));
         newElement.current.value = ""
     }
     return <div className={s.wrapper}>
@@ -26,7 +28,7 @@ const Dialogs = (props) => {
                 value={props.state.DialogePage.NewMessageText}
                 placeholder="Send Message"
                 refs={newElement}
-                onChange={() => props.dispatch({ type: "UPDATE-MESSAGE-TEXT", value: newElement.current.value })}
+                onChange={() => props.dispatch(updateMessagePostActiveCreator(newElement.current.value))}
             />
             <div className={s.SendButtom}>
                 <StyllButton value="Sand massage" onClick={SendMessage} />

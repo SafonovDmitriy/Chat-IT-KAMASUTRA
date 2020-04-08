@@ -19,6 +19,7 @@ function App(props) {
       <div className="App">
 
         <div className="appHeader"><Header /></div>
+        
         <div className="appSideBar">  <SideBar activeDialog={state.activeDialog} /></div>
         <div className="appContent">
           <Route path="/profile" render={() => <Content

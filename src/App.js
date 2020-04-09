@@ -20,7 +20,7 @@ function App(props) {
 
         <div className="appHeader"><Header /></div>
 
-        <div className="appSideBar">  <SideBar activeDialog={state.activeDialog} /></div>
+        <div className="appSideBar">  <SideBar activeDialog={state.common.activeDialog} /></div>
         <div className="appContent">
           <Route path="/profile" render={() => <Content
             state={state}

@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './NewPost.module.css'
 import { TextBox, StyllButton } from '../../inputs/inputs';
-import { updatePostTextActionCreator, addPostActionCreator } from '../../../redux/state';
+import { addPostActionCreator, updatePostTextActionCreator } from '../../../redux/Reducers/Profile-reducer';
+
 
 
 

@@ -3,8 +3,8 @@ import s from './Dialogs.module.css'
 import DialogList from './DialogList/DialogList';
 import MessageList from './MessageList/MessageList';
 import { TextBox, StyllButton } from '../inputs/inputs';
-import { updateMessagePostActiveCreator } from '../../redux/state';
-import { sandMassageActiveCreator } from './../../redux/state';
+import { updateMessagePostActiveCreator,sandMassageActiveCreator } from './../../redux/Reducers/Dialogs-reducer';
+
 
 
 const Dialogs = (props) => {

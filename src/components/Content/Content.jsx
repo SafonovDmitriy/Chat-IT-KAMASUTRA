@@ -10,7 +10,7 @@ const Content = (props) => {
     return <div className={s.wrapper}>
         <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
         <Profile className={s.Profile}
-            ProfileDate={props.state.ProfilePage.ProfileDate}
+            ProfileDate={props.state.common.ProfileDate}
         />
         <NewPost className={s.NewPost}
             dispatch={props.dispatch}

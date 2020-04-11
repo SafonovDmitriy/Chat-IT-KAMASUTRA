@@ -1,7 +1,17 @@
 
+let common
+export const sub = (obs) => {
+    common = obs.getState().common
+}
+let initialState = {
+    arrPost: [
+        { id: 0, autor: 0, post: "Hi,how are you?", likes: [{ id: 0 }, { id: 2 }] },
+        { id: 1, autor: 1, post: "It`s my first post", likes: [{ id: 1 }] }
+    ],
+    NewPostText: "",
+}
 
-const ProfileReducer = (state, active, common) => {
-
+const ProfileReducer = (state = initialState, active) => {
     switch (active.type) {
         case "ADD-POST":
             if (state.NewPostText !== "") {
@@ -22,7 +32,10 @@ const ProfileReducer = (state, active, common) => {
             let newArr = []
             let boolLike = false;
             state.arrPost[active.value].likes.map((post) => {
+                console.log(newArr);
                 common.activeIDUser === post.id ? boolLike = true : newArr.push(post);
+
+                return newArr
             })
             boolLike === false ? state.arrPost[active.value].likes.push(like) : state.arrPost[active.value].likes = newArr;
             break;
@@ -38,7 +51,9 @@ export const updatePostTextActionCreator = (text) => ({
     value: text
 })
 export const addPostActionCreator = () => ({ type: 'ADD-POST' })
-export const likeForPostActiveCreator = () => ({ type: "LIKE-FOR-POST" })
-
+export const likeForPostActiveCreator = (value) => ({
+    type: "LIKE-FOR-POST",
+    value: value
+})
 
 export default ProfileReducer

@@ -12,7 +12,9 @@ library.add(fab, faCheckSquare, faCoffee)
 
 
 function App(props) {
-  let state = props.state
+
+
+
 
   return (
     <BrowserRouter>
@@ -20,15 +22,15 @@ function App(props) {
 
         <div className="appHeader"><Header /></div>
 
-        <div className="appSideBar">  <SideBar activeDialog={state.common.activeDialog} /></div>
+        <div className="appSideBar">  <SideBar state={props.state} /></div>
         <div className="appContent">
           <Route path="/profile" render={() => <Content
-            state={state}
+            state={props.state}
             dispatch={props.dispatch}
 
           />} />
           <Route path="/messages" render={() => <Dialogs
-            state={state}
+            state={props.state}
             dispatch={props.dispatch}
           />} />
           <Route path="/news" />

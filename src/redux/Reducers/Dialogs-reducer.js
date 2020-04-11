@@ -1,5 +1,18 @@
+let common
+export const sub1=(obs)=>{
+    common=obs.getState().common
+}
 
-const DialogsReducer = (state, active, common) => {
+let initialState = {
+    NewMessageText: "",
+    arrMessage: [
+        { id: 0, sender: 0, recipient: 1, message: "How" },
+        { id: 1, sender: 1, recipient: 0, message: "are" },
+        { id: 2, sender: 0, recipient: 2, message: "You" },
+        { id: 3, sender: 1, recipient: 2, message: "?" },
+    ]
+}
+const DialogsReducer = (state = initialState, active) => {
     switch (active.type) {
         case "UPDATE-MESSAGE-TEXT":
             state.NewMessageText = active.value;

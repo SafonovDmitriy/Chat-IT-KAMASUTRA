@@ -1,27 +1,23 @@
-import React from 'react';
 import Content from './Content';
 import { updatePostTextActionCreator, addPostActionCreator, likeForPostActiveCreator } from '../../redux/Reducers/Profile-reducer';
+import { connect } from 'react-redux';
 
 
 
-const ContentContainer = (props) => {
-    let addPostAction = () => {
-        props.dispatch(addPostActionCreator())
+let mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        ProfileDate: state.common.ProfileDate,
+        arrPost: state.ProfilePage.arrPost
     }
-    let updatePostTextAction = (text) => {
-        props.dispatch(updatePostTextActionCreator(text))
-    }
-    let likeForPostActive = (id) => {
-        props.dispatch(likeForPostActiveCreator(id));
-    }
-    return <Content
-        ProfileDate={props.ProfileDate}
-        arrPost={props.arrPost}
-        addPostActionCreator={addPostAction}
-        updatePostTextActionCreator={updatePostTextAction}
-        likeForPostActiveCreator={likeForPostActive} />
-
-
-
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addPostActionCreator: () => dispatch(addPostActionCreator()),
+        updatePostTextActionCreator: (text) => dispatch(updatePostTextActionCreator(text)),
+        likeForPostActiveCreator: (id) => dispatch(likeForPostActiveCreator(id))
+    }
+}
+const ContentContainer = connect(mapStateToProps, mapDispatchToProps)(Content)
 export default ContentContainer;

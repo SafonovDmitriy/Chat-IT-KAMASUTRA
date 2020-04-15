@@ -8,23 +8,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 
-export let rerenderTree = (state) => {
-
-    ReactDOM.render(
-        <Provider store={store}>
-            <BrowserRouter>
-                <App
-                    state={state}
-                    dispatch={store.dispatch.bind(store)}
-                />
-            </BrowserRouter>
-        </Provider>
-        , document.getElementById('root'));
-}
-rerenderTree(store.getState());
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderTree(state)
-});
+ReactDOM.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <App
+                state={store.getState()}
+                dispatch={store.dispatch.bind(store)}
+            />
+        </BrowserRouter>
+    </Provider>
+    , document.getElementById('root'));
 
 serviceWorker.unregister();

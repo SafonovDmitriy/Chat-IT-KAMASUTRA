@@ -13,9 +13,14 @@ let initialState = {
     ]
 }
 const DialogsReducer = (state = initialState, active) => {
+
+    let copyState = { ...state }
+    copyState.arrMessage = [...state.arrMessage]
+
+
     switch (active.type) {
         case "UPDATE-MESSAGE-TEXT":
-            state.NewMessageText = active.value;
+            copyState.NewMessageText = active.value;
             break;
         case "SAVE-ACTIVE-DIALOG":
             common.activeDialog = active.value;
@@ -23,18 +28,18 @@ const DialogsReducer = (state = initialState, active) => {
         case "SAND-MASSAGE":
             if (state.NewMessageText !== "" & common.activeDialog !== -1) {
                 let NewMessage = {
-                    id: state.arrMessage.length,
+                    id: copyState.arrMessage.length,
                     sender: common.activeIDUser,
                     recipient: common.activeDialog,
-                    message: state.NewMessageText
+                    message: copyState.NewMessageText
                 }
-                state.arrMessage.push(NewMessage);
-                state.NewMessageText = ""
+                copyState.arrMessage.push(NewMessage);
+                copyState.NewMessageText = ""
             }
             break;
         default: return state;
     }
-    return state
+    return copyState
 }
 
 

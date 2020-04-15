@@ -1,5 +1,5 @@
 .wrapper {
-   display: grid;
+    display: grid;
     font-family: Luminari, fantasy;
     font-weight: 400;
     font-size: 21px;
@@ -7,7 +7,7 @@
     height: 100%;
 }
 
-li a  {
+li a {
     text-decoration: none;
     border: rgb(211, 144, 1) solid 2px;
     border-radius: 25px;
@@ -18,7 +18,15 @@ li {
     margin: 5px auto 15px auto;
     list-style-type: none;
 }
-a.active{
+
+a.active {
     color: gold;
     transition: 1.5s;
+}
+
+a:hover {
+    background-color: black;
+    transition: 0.2s;
+    border-color: crimson;
+    color: crimson;
 }

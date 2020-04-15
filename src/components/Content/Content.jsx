@@ -10,16 +10,17 @@ const Content = (props) => {
     return <div className={s.wrapper}>
         <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
         <Profile className={s.Profile}
-            ProfileDate={props.state.common.ProfileDate}
+            ProfileDate={props.ProfileDate}
         />
         <NewPost className={s.NewPost}
-            dispatch={props.dispatch}
+            addPostActionCreator={props.addPostActionCreator}
+            updatePostTextActionCreator={props.updatePostTextActionCreator}
         />
         <div className={s.Post}>
-            {props.state.ProfilePage.arrPost.map(posts => <Post
+            {props.arrPost.map(posts => <Post
                 posts={posts}
-                state={props.state}
-                dispatch={props.dispatch}
+                ProfileDate={props.ProfileDate}
+                likeForPostActiveCreator={props.likeForPostActiveCreator}
             />)
             }
 

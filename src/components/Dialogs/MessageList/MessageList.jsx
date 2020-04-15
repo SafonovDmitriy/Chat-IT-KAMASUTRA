@@ -5,8 +5,9 @@ import MessageItem from './MessageItem/MessageItem';
 
 const MessageList = (props) => {
   return <div className={s.wrapper}>
-    {props.state.DialogePage.arrMessage.map((item) => <MessageItem
-      state={props.state}
+    {props.arrMessage.map((item) => <MessageItem
+       activeDialog={props.activeDialog}
+       activeIDUser={props.activeIDUser}
       item={item}
     />)}
   </div>

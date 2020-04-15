@@ -1,8 +1,8 @@
-let common
-export const sub1=(obs)=>{
-    common=obs.getState().common
-}
 
+let common
+export const sub1 = (obs) => {
+    common = obs
+}
 let initialState = {
     NewMessageText: "",
     arrMessage: [
@@ -38,7 +38,7 @@ const DialogsReducer = (state = initialState, active) => {
 }
 
 
-export const updateMessagePostActiveCreator = (text) => ({
+export const updateMessageTextActiveCreator = (text) => ({
     type: "UPDATE-MESSAGE-TEXT",
     value: text
 })

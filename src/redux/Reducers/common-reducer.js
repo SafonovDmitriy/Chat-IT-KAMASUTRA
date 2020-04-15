@@ -12,5 +12,5 @@ let initialState = {
 
 }
 
-const CommonReducer = (state = initialState, active) => { return state}
+const CommonReducer = (state = initialState) => { return state}
 export default CommonReducer;

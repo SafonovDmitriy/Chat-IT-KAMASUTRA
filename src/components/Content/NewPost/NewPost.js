@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './NewPost.module.css'
 import { TextBox, StyllButton } from '../../inputs/inputs';
-import { addPostActionCreator, updatePostTextActionCreator } from '../../../redux/Reducers/Profile-reducer';
 
 
 
@@ -11,8 +10,11 @@ const NewPost = (props) => {
 
     let newPostElement = React.createRef()
     let sendPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.addPostActionCreator();
         newPostElement.current.value = ""
+    }
+    let updatePostTextActionCreator = (text) => {
+        props.updatePostTextActionCreator(text)
     }
     return <div className={s.wrapper}>
         <h1 className={s.Title}>My posts</h1>
@@ -21,8 +23,8 @@ const NewPost = (props) => {
                 placeholder="Text Post"
                 value={props.NewPostText}
                 refs={newPostElement}
-                onChange={() => props.dispatch(updatePostTextActionCreator(newPostElement.current.value))}
-            />
+                onChange={()=>updatePostTextActionCreator(newPostElement.current.value)}
+            />{}
             <div className={s.SendPost}>
                 <StyllButton className={s.sendMessage}
                     value="Send Post"

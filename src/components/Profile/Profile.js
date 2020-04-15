@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Profile.module.css'
 const Profile = (props) => {
     let id = 0
+  
     return <div className={s.wrapper}>
         <div className={s.photo}> <img alt="" src={props.ProfileDate[id].avatar} />
         </div>

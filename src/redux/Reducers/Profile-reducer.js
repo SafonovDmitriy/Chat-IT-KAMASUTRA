@@ -1,7 +1,7 @@
 
 let common
 export const sub = (obs) => {
-    common = obs.getState().common
+    common = obs
 }
 let initialState = {
     arrPost: [
@@ -46,9 +46,11 @@ const ProfileReducer = (state = initialState, active) => {
     return state
 }
 
-export const updatePostTextActionCreator = (text) => ({
+export const updatePostTextActionCreator = (text) => 
+({
     type: 'UPDATE-POST-TEXT',
     value: text
+    
 })
 export const addPostActionCreator = () => ({ type: 'ADD-POST' })
 export const likeForPostActiveCreator = (value) => ({

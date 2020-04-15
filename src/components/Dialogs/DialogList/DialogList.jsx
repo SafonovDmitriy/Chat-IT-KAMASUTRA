@@ -4,7 +4,7 @@ import DialogItem from './DialogItem/DialogItem';
 
 const DialogList = (props) => {
     return <div className={s.wrapper}>
-        {props.state.common.ProfileDate.map(human => <DialogItem human={human} state={props.state} dispatch={props.dispatch} />)}
+        {props.common.ProfileDate.map(human => <DialogItem human={human} state={props.common} saveActiveDialogActiveCreator={props.saveActiveDialogActiveCreator} />)}
     </div>
 }
 export default DialogList;

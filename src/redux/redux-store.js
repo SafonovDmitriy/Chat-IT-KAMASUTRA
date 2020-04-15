@@ -6,6 +6,7 @@ import { sub1 } from './Reducers/Dialogs-reducer';
 
 
 
- let store = createStore(reducers);
-sub(store);sub1(store)
+let store = createStore(reducers);
+let common = store.getState().common;
+sub(common); sub1(common)
 export default store;

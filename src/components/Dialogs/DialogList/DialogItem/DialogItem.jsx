@@ -5,11 +5,22 @@ import { NavLink } from 'react-router-dom';
 
 const DialogItem = (props) => {
     if (props.state.activeIDUser !== props.human.id) {
-        const hrefDialog = "/messages/" + props.human.id + "/"
+        let hrefDialog = "/messages/" + props.state.activeDialog + "/"
+        
         return <div className={s.wrapper}>
-            <NavLink onClick={() => props.saveActiveDialogActiveCreator(props.human.id)} className={props.state.activeDialog === props.human.id ? s.active : ""} activeClassName={s.active} to={hrefDialog}>{props.human.user}</NavLink>
+
+
+            <NavLink
+                onClick={() => props.saveActiveDialogActiveCreator(props.human.id)}
+                className={props.state.activeDialog === props.human.id ? s.active : ""}
+                activeClassName={s.active}
+                to={hrefDialog}>
+                <li>{props.human.user} </li>
+            </NavLink>
+
         </div>
     }
+    
     return '';
 
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 
 let mapStateToProps = (state) => {
+   
     return {
         common: state.common,
         DialogePage: state.DialogePage

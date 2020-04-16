@@ -1,6 +1,6 @@
 .wrapper {
   display: grid;
-  grid-template-columns: 150px 500px;
+  grid-template-columns: 220px 500px;
   grid-template-areas: "n m" "n s";
 }
 

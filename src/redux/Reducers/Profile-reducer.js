@@ -13,8 +13,7 @@ let initialState = {
 
 const ProfileReducer = (state = initialState, active) => {
     let copyState = { ...state }
-    copyState.arrPost=[...state.arrPost]
-   
+
 
     switch (active.type) {
         case "ADD-POST":
@@ -25,16 +24,17 @@ const ProfileReducer = (state = initialState, active) => {
                     post: state.NewPostText,
                     likes: []
                 }
-               
+                copyState.arrPost = [...state.arrPost]
                 copyState.arrPost.push(NewItem);
                 copyState.NewPostText = "";
             }
             break;
         case "UPDATE-POST-TEXT":
-            
+
             copyState.NewPostText = active.value;
             break;
         case "LIKE-FOR-POST":
+            copyState.arrPost = [...state.arrPost]
             let like = { id: common.activeIDUser }
             let newArr = []
             let boolLike = false;

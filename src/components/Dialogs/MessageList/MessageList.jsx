@@ -4,6 +4,7 @@ import MessageItem from './MessageItem/MessageItem';
 
 
 const MessageList = (props) => {
+  debugger;
   return <div className={s.wrapper}>
     {props.arrMessage.map((item) => <MessageItem
        activeDialog={props.activeDialog}

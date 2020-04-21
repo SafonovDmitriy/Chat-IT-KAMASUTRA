@@ -30,7 +30,6 @@ const ProfileReducer = (state = initialState, active) => {
             }
             break;
         case "UPDATE-POST-TEXT":
-
             copyState.NewPostText = active.value;
             break;
         case "LIKE-FOR-POST":

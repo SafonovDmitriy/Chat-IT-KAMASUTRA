@@ -15,8 +15,8 @@ let initialState = {
 const DialogsReducer = (state = initialState, active) => {
 
     let copyState = { ...state }
-    
-   
+    copyState.arrMessage = [...state.arrMessage]
+
     switch (active.type) {
         case "UPDATE-MESSAGE-TEXT":
             copyState.NewMessageText = active.value;
@@ -39,10 +39,10 @@ const DialogsReducer = (state = initialState, active) => {
                 copyState.NewMessageText = ""
             }
             break;
-        default: return copyState ;
+        default: return copyState;
     }
-    
-    return  copyState;
+
+    return copyState;
 }
 
 

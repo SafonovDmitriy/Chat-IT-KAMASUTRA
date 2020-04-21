@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 let mapStateToProps = (state) => {
 
   return {
-    activeDialog: state.activeDialog,
+    activeDialog: state.common.activeDialog,
     sideBar: state.sideBar.sideBarMenu
   }
 }

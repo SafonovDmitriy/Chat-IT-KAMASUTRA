@@ -13,7 +13,7 @@ const Dialogs = (props) => {
         props.sandMassageActiveCreator(newElement.current.value);
         newElement.current.value = ""
     }
-   
+    
     return <div className={s.wrapper}>
         <DialogList className={s.NamesList}
             common={props.common}

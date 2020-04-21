@@ -1,7 +1,4 @@
-let common
-export const sub2 = (obs) => {
-    common = obs
-}
+
 
 
 let initialState = {
@@ -20,19 +17,14 @@ let initialState = {
 const SideBarReducer = (state = initialState, active) => {
 
     let copyState = { ...state }
-    
 
     switch (active.type) {
         case "UPDATE-URL":
-            if(common.activeDialog!==-1){
-                copyState.sideBarMenu=[...state.sideBarMenu]
-               
-                copyState.sideBarMenu.map((item)=>{item.href==="/messages/"?item.href="/messages/"+common.activeDialog+"/":console.log(">")})
-            }
+           
            
           
             break;
-        default: return copyState;
+        default: return state;
     }
 
     return copyState;

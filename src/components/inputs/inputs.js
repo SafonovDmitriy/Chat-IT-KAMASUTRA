@@ -1,20 +1,26 @@
 import React from 'react';
 import s from './inputs.module.css'
 
-const TextBox = (props) => {
-  return <input className={s.TextBox} type="text"
-    value={props.value}
-    placeholder={props.placeholder}
-    ref={props.refs}
-    onChange={props.onChange}
-  />
+class TextBox extends React.Component {
+  render() {
+    return <input className={s.TextBox} type="text"
+      value={this.props.value}
+      placeholder={this.props.placeholder}
+      ref={this.props.refs}
+      onChange={this.props.onChange}
+    />
+  }
 
-};
-const StyllButton = (props) => {
-  return <input className={s.StyllButton} type="button"
-    value={props.value}
-    onClick={props.onClick}
-  />
-};
+}
+
+
+class StyllButton extends React.Component {
+  render() {
+    return <input className={s.StyllButton} type="button"
+      value={this.props.value}
+      onClick={this.props.onClick}
+    />
+  }
+}
 
 export { TextBox, StyllButton }

@@ -1,0 +1,48 @@
+.item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    border: rgb(211, 144, 1) solid 2px;
+    border-radius: 25px;
+    margin: 10px 0px;
+    padding: 10px 0px;
+}
+
+.avatar {
+    float: right;
+    width: 175px;
+    height: 150px;
+}
+
+.imgFoll {
+    display: grid;
+    margin: auto;
+}
+
+.imgFoll button {
+    width: 100px;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.infoBox {
+    display: grid;
+    margin: auto;
+    grid-template-areas: "f" "s" "city""c";
+    grid-template-rows: 25px 25px 25px 25px;
+}
+
+.fullName {
+    grid-area: f;
+}
+
+.status {
+    grid-area: s;
+}
+
+.city {
+    grid-area: city;
+}
+
+.country {
+    grid-area: c;
+}

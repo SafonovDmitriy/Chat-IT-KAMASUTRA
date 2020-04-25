@@ -8,6 +8,7 @@ import { Route, } from 'react-router-dom';
 import ContentContainer from './components/Content/ContentContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import SideBarContainer from './components/SideBar/SideBarContainer.jsx';
+import UsersContainer from './components/Users/Users.Container';
 library.add(fab, faCheckSquare, faCoffee)
 
 
@@ -23,22 +24,19 @@ function App(props) {
       <div className="appHeader"><Header /></div>
 
       <div className="appSideBar">  <SideBarContainer
-        activeDialog={props.state.common.activeDialog}
-        sideBar={props.state.sideBar}
-        dispatch={props.dispatch} /></div>
+      /></div>
       <div className="appContent">
         <Route path="/profile" render={() => <ContentContainer
-          ProfileDate={props.state.common.ProfileDate}
-          arrPost={props.state.ProfilePage.arrPost}
-          dispatch={props.dispatch}
+
         />} />
         <Route path="/messages" render={() => <DialogsContainer
-          common={props.state.common}
-          DialogePage={props.state.DialogePage}
-          dispatch={props.dispatch}
+
         />} />
         <Route path="/news" />
         <Route path="/music" />
+        <Route path="/FindUser" render={() => <UsersContainer />
+
+        } />
         <Route path="/setting" />
 
       </div>

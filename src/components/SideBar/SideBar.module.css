@@ -3,8 +3,7 @@
     font-family: Luminari, fantasy;
     font-weight: 400;
     font-size: 19px;
-    background-color: darkgreen;
-    width: 50%; 
+    max-width: 200px;
 }
 
 a {
@@ -24,7 +23,7 @@ a.active {
     transition: 1.5s;
 }
 
-li:hover  {
+li:hover {
     background-color: black;
     transition: 0.2s;
     border-color: crimson;

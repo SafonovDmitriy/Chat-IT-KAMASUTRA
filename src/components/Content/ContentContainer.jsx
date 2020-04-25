@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 
 let mapStateToProps = (state) => {
-    console.log(state)
     return {
         ProfileDate: state.common.ProfileDate,
         arrPost: state.ProfilePage.arrPost

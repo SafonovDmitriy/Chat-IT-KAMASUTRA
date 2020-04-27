@@ -5,15 +5,35 @@ import userPhoto from "../../assets/images/123.png"
 
 
 class Users extends React.Component {
-    componentDidMount() {
-        console.log("Hi")
-        Axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            console.log("i'm here")
+    get(p = this.props.urlPage.page) {
+        this.props.updatePage(p);
+        Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.urlPage.pageSize}`).then(response => {
+            this.props.updateTotalCount(response.data.totalCount)
             this.props.setUsers(response.data.items)
         })
     }
+    componentDidMount() {
+        this.get()
+    }
+
     render() {
+
+        let pagesCount = Math.ceil(this.props.urlPage.totalUsersCount / this.props.urlPage.pageSize)
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return <div>
+            <div>
+                {
+                    pages.map(p => {
+
+                        return <span onClick={() => this.get(p)} className={this.props.urlPage.page === p ? s.selectedPage : ""}>{p + " "}</span>
+                    })
+
+                }
+            </div>
             {this.props.users.map(u => <div key={u.id}>
                 <div className={s.item}>
                     <div className={s.imgFoll}>

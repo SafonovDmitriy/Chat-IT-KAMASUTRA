@@ -46,3 +46,6 @@
 .country {
     grid-area: c;
 }
+.selectedPage{
+   color: red;
+}

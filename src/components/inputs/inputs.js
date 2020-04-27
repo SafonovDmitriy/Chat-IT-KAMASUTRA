@@ -12,8 +12,6 @@ class TextBox extends React.Component {
   }
 
 }
-
-
 class StyllButton extends React.Component {
   render() {
     return <input className={s.StyllButton} type="button"

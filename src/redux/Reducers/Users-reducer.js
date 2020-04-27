@@ -3,15 +3,14 @@
 
 let initialState = {
     users: [],
+    urlPage: { page: 1, pageSize: 10, totalUsersCount: 0 }
 }
 
 const UsersReducer = (state = initialState, active) => {
     let copyState = { ...state }
-
-
     switch (active.type) {
-        case "FOLLOW":
 
+        case "FOLLOW":
             copyState = {
                 ...state, users: state.users.map(u => {
                     if (u.id === active.userId) {
@@ -19,7 +18,6 @@ const UsersReducer = (state = initialState, active) => {
                     }
                     return u
                 })
-
             }
             break;
         case "UNFOLLOW":
@@ -32,12 +30,20 @@ const UsersReducer = (state = initialState, active) => {
                 })
 
             }
-
             break;
         case "SETUSERS":
             {
                 return { ...state, users: [...state.users, ...active.users] }
             }
+        case "UPDATETOTALCOUNT":
+            {
+                return { ...state, urlPage: { ...state.urlPage, totalUsersCount: active.count } }
+            }
+        case "UPDATEPAGE":
+            {
+                return { ...state, urlPage: { ...state.urlPage, page: active.count } }
+            }
+
 
         default: return copyState;
     }
@@ -58,6 +64,16 @@ export const setUsersAC = (user) =>
     ({
         type: 'SETUSERS',
         users: user
+    })
+export const updateTotalCountAC = (int) =>
+    ({
+        type: 'UPDATETOTALCOUNT',
+        count: int
+    })
+export const updatePageAC = (int) =>
+    ({
+        type: 'UPDATEPAGE',
+        count: int
     })
 
 export default UsersReducer

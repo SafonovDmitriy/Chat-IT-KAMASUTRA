@@ -46,6 +46,8 @@
 .country {
     grid-area: c;
 }
-.selectedPage{
-   color: red;
+
+.selectedPage {
+    color: red;
+    font-weight: bold;
 }

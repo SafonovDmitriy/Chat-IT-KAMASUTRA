@@ -31,15 +31,15 @@ const UsersReducer = (state = initialState, active) => {
 
             }
             break;
-        case "SETUSERS":
+        case "SET_USERS":
             {
-                return { ...state, users: [...state.users, ...active.users] }
+                return { ...state, users: active.users }
             }
-        case "UPDATETOTALCOUNT":
+        case "UPDATE_TOTAL_COUNT":
             {
                 return { ...state, urlPage: { ...state.urlPage, totalUsersCount: active.count } }
             }
-        case "UPDATEPAGE":
+        case "UPDATE_PAGE":
             {
                 return { ...state, urlPage: { ...state.urlPage, page: active.count } }
             }
@@ -50,30 +50,10 @@ const UsersReducer = (state = initialState, active) => {
 
     return copyState;
 }
-export const followAC = (userId) =>
-    ({
-        type: 'FOLLOW',
-        userId: userId
-    })
-export const unfollowAC = (userId) =>
-    ({
-        type: 'UNFOLLOW',
-        userId: userId
-    })
-export const setUsersAC = (user) =>
-    ({
-        type: 'SETUSERS',
-        users: user
-    })
-export const updateTotalCountAC = (int) =>
-    ({
-        type: 'UPDATETOTALCOUNT',
-        count: int
-    })
-export const updatePageAC = (int) =>
-    ({
-        type: 'UPDATEPAGE',
-        count: int
-    })
+export const followAC = (userId) => ({ type: 'FOLLOW', userId: userId })
+export const unfollowAC = (userId) => ({ type: 'UNFOLLOW', userId: userId })
+export const setUsersAC = (user) => ({ type: 'SET_USERS', users: user })
+export const updateTotalCountAC = (int) => ({ type: 'UPDATE_TOTAL_COUNT', count: int })
+export const updatePageAC = (int) => ({ type: 'UPDATE_PAGE', count: int })
 
 export default UsersReducer

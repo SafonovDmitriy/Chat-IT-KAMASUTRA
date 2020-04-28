@@ -5,10 +5,10 @@ import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 import Header from './components/Header/Header.jsx';
 import { Route, } from 'react-router-dom';
-import ContentContainer from './components/Content/ContentContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import SideBarContainer from './components/SideBar/SideBarContainer.jsx';
-import UsersContainer from './components/Users/Users.Container';
+import ContentContainer from './components/Content/ContentContainer.js';
+import DialogsContainer from './components/Dialogs/DialogsContainer.js';
+import SideBarContainer from './components/SideBar/SideBarContainer.js';
+import UsersContainer from './components/Users/Users.Container.js';
 library.add(fab, faCheckSquare, faCoffee)
 
 

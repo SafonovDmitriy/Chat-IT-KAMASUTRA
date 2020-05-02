@@ -3,7 +3,8 @@
 
 let initialState = {
     users: [],
-    urlPage: { page: 1, pageSize: 10, totalUsersCount: 0 }
+    urlPage: { page: 1, pageSize: 10, totalUsersCount: 0 },
+    preloaded: false
 }
 
 const UsersReducer = (state = initialState, active) => {
@@ -43,6 +44,10 @@ const UsersReducer = (state = initialState, active) => {
             {
                 return { ...state, urlPage: { ...state.urlPage, page: active.count } }
             }
+        case "UPDATE_PRELOAFER":
+            {
+                return {...state,preloaded:active.isFetching }
+            }
 
 
         default: return copyState;
@@ -55,5 +60,7 @@ export const unfollowAC = (userId) => ({ type: 'UNFOLLOW', userId: userId })
 export const setUsersAC = (user) => ({ type: 'SET_USERS', users: user })
 export const updateTotalCountAC = (int) => ({ type: 'UPDATE_TOTAL_COUNT', count: int })
 export const updatePageAC = (int) => ({ type: 'UPDATE_PAGE', count: int })
+export const updatePreloaderAC = (count) => ({ type: 'UPDATE_PRELOAFER',isFetching:count})
+
 
 export default UsersReducer

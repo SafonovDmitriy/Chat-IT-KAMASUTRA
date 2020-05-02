@@ -1,0 +1,7 @@
+.preloader{
+    display: grid;
+    margin: auto;
+}
+.backPreloader{
+    background-color: red;
+}

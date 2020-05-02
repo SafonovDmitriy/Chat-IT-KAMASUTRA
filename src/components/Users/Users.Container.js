@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { followAC, unfollowAC, setUsersAC, updateTotalCountAC, updatePageAC, updatePreloaderAC } from '../../redux/Reducers/Users-reducer';
+import { follow, unfollow, setUsers, updateTotalCount, updatePage, updatePreloader } from '../../redux/Reducers/Users-reducer';
 import Axios from 'axios';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader.jsx';
@@ -29,8 +29,8 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        return <><Preloader/>
-            {this.props.preloaded ? <Preloader/> : <Users
+        return <>
+            {this.props.preloaded ? <Preloader /> : <Users
                 urlPage={this.props.urlPage}
                 users={this.props.users}
                 updatePage={(int) => this.getNewUsers(int)}
@@ -50,20 +50,10 @@ let mapStateToProps = (state) => {
         preloaded: s.preloaded
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId));
-        },
-        setUsers: (users) => dispatch(setUsersAC(users)),
-        updateTotalCount: (int) => dispatch(updateTotalCountAC(int)),
-        updatePage: (int) => dispatch(updatePageAC(int)),
-        updatePreloader: (count) => dispatch(updatePreloaderAC(count))
 
-
+export default connect(mapStateToProps,
+    {
+        follow, unfollow, setUsers,
+        updateTotalCount, updatePage, updatePreloader
     }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+)(UsersContainer)

@@ -9,6 +9,8 @@ let initialState = {
         { id: 1, autor: 1, post: "It`s my first post", likes: [{ id: 1 }] }
     ],
     NewPostText: "",
+    selectUser:0,
+    preloader:false
 }
 
 const ProfileReducer = (state = initialState, active) => {
@@ -29,9 +31,15 @@ const ProfileReducer = (state = initialState, active) => {
                 copyState.NewPostText = "";
             }
             break;
+        case "SELECT-USER":
+        return { ...state,selectUser:active.idUser}
+            
         case "UPDATE-POST-TEXT":
             copyState.NewPostText = active.value;
             break;
+        case "UPDETE-PRELOADER":
+            return {...state,preloader:active.value}
+            
         case "LIKE-FOR-POST":
             copyState.arrPost = [...state.arrPost]
             let like = { id: common.activeIDUser }
@@ -51,14 +59,16 @@ const ProfileReducer = (state = initialState, active) => {
     return copyState
 }
 
-export const updatePostTextActionCreator = (text) =>
+export const updatePostText = (text) =>
     ({
         type: 'UPDATE-POST-TEXT',
         value: text
 
     })
-export const addPostActionCreator = () => ({ type: 'ADD-POST' })
-export const likeForPostActiveCreator = (value) => ({
+export const addPost = () => ({ type: 'ADD-POST' })
+export const updatePreloader = (value) => ({ type: 'UPDETE-PRELOADER',value })
+export const selectUser = (id) => ({ type: 'SELECT-USER',idUser:id })
+export const likeForPost = (value) => ({
     type: "LIKE-FOR-POST",
     value: value
 })

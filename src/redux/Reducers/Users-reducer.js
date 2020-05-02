@@ -55,12 +55,12 @@ const UsersReducer = (state = initialState, active) => {
 
     return copyState;
 }
-export const followAC = (userId) => ({ type: 'FOLLOW', userId: userId })
-export const unfollowAC = (userId) => ({ type: 'UNFOLLOW', userId: userId })
-export const setUsersAC = (user) => ({ type: 'SET_USERS', users: user })
-export const updateTotalCountAC = (int) => ({ type: 'UPDATE_TOTAL_COUNT', count: int })
-export const updatePageAC = (int) => ({ type: 'UPDATE_PAGE', count: int })
-export const updatePreloaderAC = (count) => ({ type: 'UPDATE_PRELOAFER',isFetching:count})
+export const follow = (userId) => ({ type: 'FOLLOW', userId: userId })
+export const unfollow = (userId) => ({ type: 'UNFOLLOW', userId: userId })
+export const setUsers = (user) => ({ type: 'SET_USERS', users: user })
+export const updateTotalCount = (int) => ({ type: 'UPDATE_TOTAL_COUNT', count: int })
+export const updatePage = (int) => ({ type: 'UPDATE_PAGE', count: int })
+export const updatePreloader = (count) => ({ type: 'UPDATE_PRELOAFER',isFetching:count})
 
 
 export default UsersReducer

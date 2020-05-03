@@ -26,10 +26,10 @@ function App(props) {
       <div className="appSideBar">  <SideBarContainer
       /></div>
       <div className="appContent">
-        <Route path="/profile" render={() => <ContentContainer
+        <Route path='/profile/:userId?/' render={() => <ContentContainer
 
         />} />
-        <Route path="/messages" render={() => <DialogsContainer
+        <Route path="/messages/" render={() => <DialogsContainer
 
         />} />
         <Route path="/news" />

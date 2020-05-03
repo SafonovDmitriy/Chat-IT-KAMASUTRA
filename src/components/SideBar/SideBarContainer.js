@@ -1,6 +1,7 @@
 import SideBar from './SideBar.jsx';
 import { updateUrlActive } from '../../redux/Reducers/SideBar-reducer.js';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -9,13 +10,15 @@ let mapStateToProps = (state) => {
 
   return {
     activeDialog: state.common.activeDialog,
-    sideBar: state.sideBar.sideBarMenu
+    sideBar: state.sideBar.sideBarMenu,
+    activeIDUser:state.common.activeIDUser
   }
 }
 let mapDispatchToProps = (dispatch) => {
   return {
-    updateUrlActive: () => dispatch(updateUrlActive())
+    updateUrlActive: (url) => dispatch(updateUrlActive(url))
   }
 }
-const SideBarContainer = connect(mapStateToProps, mapDispatchToProps)(SideBar)
+let withUrlData = withRouter(SideBar)
+const SideBarContainer = connect(mapStateToProps, mapDispatchToProps)(withUrlData)
 export default SideBarContainer

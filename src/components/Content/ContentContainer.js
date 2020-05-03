@@ -11,14 +11,16 @@ import Profile from '../Profile/Profile';
 import * as axios from 'axios';
 import Preloader from '../common/Preloader/Preloader';
 import { selectUser } from './../../redux/Reducers/Profile-reducer';
+import { withRouter } from 'react-router-dom';
 
 class Content extends React.Component {
     componentDidMount() {
-        updatePreloader(true)
-        axios.get('https://social-network.samuraijs.com/api/1.0/profile/2').then(responce => {
+        
+            updatePreloader(true)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${!this.props.match.params.userId?this.props.activeIDUser:this.props.match.params.userId}`).then(responce => {
 
             this.props.selectUser({ ...responce.data, ...responce.data.contacts, ...responce.data.photos })
-            console.log(this.props.selUser)
+            console.log(responce.data)
             updatePreloader(false)
         }
 
@@ -48,22 +50,23 @@ class Content extends React.Component {
     }
 
 }
-
+let withUrlData = withRouter(Content)
 let mapStateToProps = (state) => {
     return {
         ProfileDate: state.common.ProfileDate,
         arrPost: state.ProfilePage.arrPost,
         activeIDUser: state.common.activeIDUser,
         preloader: state.ProfilePage.preloader,
-        selUser: state.ProfilePage.selectUser
+        selUser: state.ProfilePage.selectUser,
+
     }
 }
 
-const ContentContainer = connect(mapStateToProps, {
+
+export default connect(mapStateToProps, {
     addPost,
     updatePostText,
     likeForPost,
     updatePreloader,
     selectUser
-})(Content)
-export default ContentContainer;
+})(withUrlData);

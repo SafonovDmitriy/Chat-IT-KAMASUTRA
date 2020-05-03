@@ -1,12 +1,17 @@
+// let common
+// export const sub2 = (obs) => {
 
+//     common = obs
+// }
 
 
 let initialState = {
     activeDialog: -1,
+    activeURL:"",
     sideBarMenu:
         [
-            { id: 0, title: "Profile", href: "/profile/" },
-            { id: 1, title: "Message", href: "/messages/" },
+            { id: 0, title: "Profile", href: '/profile/' },
+            { id: 1, title: "Messages", href: "/messages/" },
             { id: 2, title: "News", href: "/news/" },
             { id: 3, title: "Music", href: "/music/" },
             { id: 4, title: "Find User", href: "/FindUser/" },
@@ -17,20 +22,20 @@ let initialState = {
 
 const SideBarReducer = (state = initialState, active) => {
 
-    let copyState = { ...state }
+
 
     switch (active.type) {
         case "UPDATE-URL":
-            break;
+          
+            return { ...state,activeURL:active.url }
         default: return state;
     }
-
-    return copyState;
 }
 
-export const updateUrlActive = () =>
+export const updateUrlActive = (href) =>
     ({
         type: 'UPDATE-URL',
+        url:href
     })
 
 

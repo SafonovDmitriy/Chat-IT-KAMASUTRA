@@ -10,11 +10,11 @@ const NewPost = (props) => {
 
     let newPostElement = React.createRef()
     let sendPost = () => {
-        props.addPostActionCreator();
+        props.addPost();
         newPostElement.current.value = ""
     }
-    let updatePostTextActionCreator = (text) => {
-        props.updatePostTextActionCreator(text)
+    let updatePostText = (text) => {
+        props.updatePostText(text)
     }
     return <div className={s.wrapper}>
         <h1 className={s.Title}>My posts</h1>
@@ -23,7 +23,7 @@ const NewPost = (props) => {
                 placeholder="Text Post"
                 value={props.NewPostText}
                 refs={newPostElement}
-                onChange={()=>updatePostTextActionCreator(newPostElement.current.value)}
+                onChange={()=>updatePostText(newPostElement.current.value)}
             />{}
             <div className={s.SendPost}>
                 <StyllButton className={s.sendMessage}

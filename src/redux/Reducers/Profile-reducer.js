@@ -9,8 +9,20 @@ let initialState = {
         { id: 1, autor: 1, post: "It`s my first post", likes: [{ id: 1 }] }
     ],
     NewPostText: "",
-    selectUser:0,
-    preloader:false
+    selectUser: {
+        contacts: { facebook: null, github: null, instagram: null, mainLink: null, twitter: null, vk: null, website: null, youtube: null },
+        photos: {
+            large: null,
+            small: null
+        },
+        aboutMe: null,
+        fullName: null,
+        lookingForAJob: null,
+        lookingForAJobDescription: null
+
+    },
+    preloader: false
+
 }
 
 const ProfileReducer = (state = initialState, active) => {
@@ -32,14 +44,13 @@ const ProfileReducer = (state = initialState, active) => {
             }
             break;
         case "SELECT-USER":
-        return { ...state,selectUser:active.idUser}
-            
+            return { ...state, selectUser: active.user }
+
         case "UPDATE-POST-TEXT":
             copyState.NewPostText = active.value;
             break;
         case "UPDETE-PRELOADER":
-            return {...state,preloader:active.value}
-            
+            return { ...state, preloader: active.value }
         case "LIKE-FOR-POST":
             copyState.arrPost = [...state.arrPost]
             let like = { id: common.activeIDUser }
@@ -66,8 +77,8 @@ export const updatePostText = (text) =>
 
     })
 export const addPost = () => ({ type: 'ADD-POST' })
-export const updatePreloader = (value) => ({ type: 'UPDETE-PRELOADER',value })
-export const selectUser = (id) => ({ type: 'SELECT-USER',idUser:id })
+export const updatePreloader = (value) => ({ type: 'UPDETE-PRELOADER', value })
+export const selectUser = (user) => ({ type: 'SELECT-USER', user: user })
 export const likeForPost = (value) => ({
     type: "LIKE-FOR-POST",
     value: value

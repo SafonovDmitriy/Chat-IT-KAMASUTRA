@@ -1,18 +1,19 @@
 import React from 'react';
 import s from './Profile.module.css'
+import userPhoto from '../../assets/images/123.png'
 const Profile = (props) => {
    
   
     return <div className={s.wrapper}>
-        {/* <div className={s.photo}> <img alt="" src={props.ProfileDate[props.id].avatar} />
+        <div className={s.photo}> <img alt="" src={props.user.photos.large===null?userPhoto:props.user.photos.large} />
         </div>
         <div className={s.info}>
 
-            <h1>Name: {props.ProfileDate[props.id].user}</h1>
-            <p>Date of Birth: {props.ProfileDate[props.id].dateOfBirth}</p>
-            <p>City: {props.ProfileDate[props.id].city}</p>
-            <p>Web Site: <a href={props.ProfileDate[props.id].website}>{props.ProfileDate[props.id].website}</a></p>
-        </div> */}
+            <h1>Name: {props.user.fullName}</h1>
+            <p>AboutMe: {props.user.aboutMe}</p>
+            <p>Facebook: {props.user.contacts.facebook}</p>
+            <p>Instagram: {props.user.contacts.instagram}</p>
+        </div>
     </div>
 }
 export default Profile;

@@ -13,7 +13,7 @@ class Post extends React.Component {
             <img className={s.avatar} alt="" src={this.props.ProfileDate[this.props.posts.autor].avatar} />
             <p className={s.post}> {this.props.posts.post} </p>
             <div className={s.buttonlike}>
-                <FaRegThumbsUp className={this.liker === true ? s.ico : ''} onClick={() => this.props.likeForPostActiveCreator(this.props.posts.id)
+                <FaRegThumbsUp className={this.liker === true ? s.ico : ''} onClick={() => this.props.likeForPost(this.props.posts.id)
                 } />
             </div>
 

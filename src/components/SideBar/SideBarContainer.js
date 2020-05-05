@@ -9,9 +9,9 @@ import { withRouter } from 'react-router-dom';
 let mapStateToProps = (state) => {
 
   return {
-    activeDialog: state.common.activeDialog,
+    activeDialog: state.auth.activeDialog,
     sideBar: state.sideBar.sideBarMenu,
-    activeIDUser:state.common.activeIDUser
+    activeIDUser:state.auth.activeIDUser
   }
 }
 let mapDispatchToProps = (dispatch) => {

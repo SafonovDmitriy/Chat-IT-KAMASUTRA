@@ -16,18 +16,18 @@ import { withRouter } from 'react-router-dom';
 class Content extends React.Component {
     componentDidMount() {
         
-            updatePreloader(true)
+            this.props.updatePreloader(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${!this.props.match.params.userId?this.props.activeIDUser:this.props.match.params.userId}`).then(responce => {
 
             this.props.selectUser({ ...responce.data, ...responce.data.contacts, ...responce.data.photos })
             console.log(responce.data)
-            updatePreloader(false)
+            this.props.updatePreloader(false)
         }
 
         )
     }
     render() {
-        return this.props.preloader === true ? <Preloader /> : <div className={s.wrapper}>
+        return this.props.preloader  ? <Preloader /> : <div className={s.wrapper}>
             <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
             <Profile className={s.Profile}
                 user={this.props.selUser}
@@ -55,7 +55,7 @@ let mapStateToProps = (state) => {
     return {
         ProfileDate: state.common.ProfileDate,
         arrPost: state.ProfilePage.arrPost,
-        activeIDUser: state.common.activeIDUser,
+        activeIDUser: state.auth.activeIDUser,
         preloader: state.ProfilePage.preloader,
         selUser: state.ProfilePage.selectUser,
 

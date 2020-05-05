@@ -4,6 +4,7 @@ export const sub = (obs) => {
     common = obs
 }
 let initialState = {
+    preloader: false,
     arrPost: [
         { id: 0, autor: 0, post: "Hi,how are you?", likes: [{ id: 0 }, { id: 2 }] },
         { id: 1, autor: 1, post: "It`s my first post", likes: [{ id: 1 }] }
@@ -21,7 +22,7 @@ let initialState = {
         lookingForAJobDescription: null
 
     },
-    preloader: false
+    
 
 }
 
@@ -50,6 +51,7 @@ const ProfileReducer = (state = initialState, active) => {
             copyState.NewPostText = active.value;
             break;
         case "UPDETE-PRELOADER":
+          
             return { ...state, preloader: active.value }
         case "LIKE-FOR-POST":
             copyState.arrPost = [...state.arrPost]
@@ -77,7 +79,7 @@ export const updatePostText = (text) =>
 
     })
 export const addPost = () => ({ type: 'ADD-POST' })
-export const updatePreloader = (value) => ({ type: 'UPDETE-PRELOADER', value })
+export const updatePreloader = (value) => ({ type: 'UPDETE-PRELOADER', value:value })
 export const selectUser = (user) => ({ type: 'SELECT-USER', user: user })
 export const likeForPost = (value) => ({
     type: "LIKE-FOR-POST",

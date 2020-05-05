@@ -3,12 +3,12 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
-import Header from './components/Header/Header.jsx';
 import { Route, } from 'react-router-dom';
 import ContentContainer from './components/Content/ContentContainer.js';
 import DialogsContainer from './components/Dialogs/DialogsContainer.js';
 import SideBarContainer from './components/SideBar/SideBarContainer.js';
 import UsersContainer from './components/Users/Users.Container.js';
+import HeaderContainer from './components/Header/Header.Container';
 library.add(fab, faCheckSquare, faCoffee)
 
 
@@ -21,7 +21,7 @@ function App(props) {
 
     <div className="App">
 
-      <div className="appHeader"><Header /></div>
+      <div className="appHeader"><HeaderContainer /></div>
 
       <div className="appSideBar">  <SideBarContainer
       /></div>

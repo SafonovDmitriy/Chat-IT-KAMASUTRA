@@ -6,7 +6,7 @@
     grid-template-areas: "logo menu login";
 }
 
-.wrapper img {
+.logo {
     margin-left: 25px;
     margin-top: 10px;
     grid-area: logo;
@@ -29,6 +29,15 @@
 }
 .loginBlock{
     grid-area: login;
+}
+.loginBlock a{
+    width: 50px;
     float: right;
-    margin: 15%;
+    margin: 5% 15%;
+   
+}
+.loginBlock img{
+    width: 75px;
+    float: right;
+    margin: 5% 15%;
 }

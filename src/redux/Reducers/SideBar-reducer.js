@@ -1,9 +1,3 @@
-// let common
-// export const sub2 = (obs) => {
-
-//     common = obs
-// }
-
 
 let initialState = {
     activeDialog: -1,

@@ -8,26 +8,23 @@ import s from './Content.module.css'
 import Profile from '../Profile/Profile';
 // import NewPost from './NewPost/NewPost';
 // import Post from './Post/Post';
-import * as axios from 'axios';
 import Preloader from '../common/Preloader/Preloader';
 import { selectUser } from './../../redux/Reducers/Profile-reducer';
 import { withRouter } from 'react-router-dom';
+import { loginAPI } from './../../api/api';
 
 class Content extends React.Component {
     componentDidMount() {
-        
-            this.props.updatePreloader(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${!this.props.match.params.userId?this.props.activeIDUser:this.props.match.params.userId}`).then(responce => {
-
-            this.props.selectUser({ ...responce.data, ...responce.data.contacts, ...responce.data.photos })
-            console.log(responce.data)
+        this.props.updatePreloader(true)
+        loginAPI.getUserDate(!this.props.match.params.userId ? this.props.activeIDUser : this.props.match.params.userId).then(responce => {
+           
+            this.props.selectUser({ ...responce, ...responce.contacts, ...responce.photos })
             this.props.updatePreloader(false)
         }
-
         )
     }
     render() {
-        return this.props.preloader  ? <Preloader /> : <div className={s.wrapper}>
+        return this.props.preloader ? <Preloader /> : <div className={s.wrapper}>
             <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
             <Profile className={s.Profile}
                 user={this.props.selUser}

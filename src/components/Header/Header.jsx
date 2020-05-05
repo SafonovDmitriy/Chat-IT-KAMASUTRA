@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const Header = (props) => {
   return <div className={s.wrapper}>
-    <img alt="" src="https://volkland.com.ua/sites/all/themes/volkland/logo.png" />
+    <img className={s.logo} alt="" src="https://volkland.com.ua/sites/all/themes/volkland/logo.png" />
 
     <div className={s.headerMenu}><ul>
       <a href="/#1"><li>Item1</li></a>
@@ -17,7 +17,7 @@ const Header = (props) => {
     
     
     {
-      props.activeIDUser===null?<div><NavLink className={s.loginBlock} to="/login/">Login</NavLink></div>:<div className={s.loginBlock}>You`r ID is {props.activeIDUser}</div>
+     <div className={s.loginBlock}>{props.isAuth===false?<NavLink  to="/login/">Login</NavLink>:<img alt="" src={props.avatar}/>} </div>
     }
     
   </div>

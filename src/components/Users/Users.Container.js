@@ -4,6 +4,7 @@ import { follow, unfollow, setUsers, updateTotalCount, updatePage, updatePreload
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader.jsx';
 import { UsersAPI, subscribeAPI } from './../../api/api';
+import { updateFollowing } from './../../redux/Reducers/Users-reducer';
 
 class UsersContainer extends React.Component {
 
@@ -28,18 +29,21 @@ class UsersContainer extends React.Component {
     }
 
     follow = (idUser) => {
+        this.props.updateFollowing(true, idUser)
         subscribeAPI.postFollow(idUser).then(response => {
             if (response.resultCode === 0) {
                 this.props.follow(idUser)
             }
+            this.props.updateFollowing(false, idUser)
         })
     }
     unfollow = (idUser) => {
-
+        this.props.updateFollowing(true, idUser)
         subscribeAPI.deleteFollow(idUser).then(response => {
             if (response.resultCode === 0) {
                 this.props.unfollow(idUser)
             }
+            this.props.updateFollowing(false, idUser)
         })
     }
     render() {
@@ -47,9 +51,11 @@ class UsersContainer extends React.Component {
             {this.props.preloaded ? <Preloader /> : <Users
                 urlPage={this.props.urlPage}
                 users={this.props.users}
+                followingInProgress={this.props.followingInProgress}
                 updatePage={(int) => this.getNewUsers(int)}
                 follow={(idUser) => this.follow(idUser)}
                 unfollow={(idUser) => this.unfollow(idUser)}
+
             />}
 
         </>
@@ -61,13 +67,15 @@ let mapStateToProps = (state) => {
     return {
         users: s.users,
         urlPage: s.urlPage,
-        preloaded: s.preloaded
+        preloaded: s.preloaded,
+        followingInProgress: s.followingInProgress
     }
 }
 
 export default connect(mapStateToProps,
     {
         follow, unfollow, setUsers,
-        updateTotalCount, updatePage, updatePreloader
+        updateTotalCount, updatePage, updatePreloader,
+        updateFollowing
     }
 )(UsersContainer)

@@ -17,7 +17,6 @@ class Content extends React.Component {
     componentDidMount() {
         this.props.updatePreloader(true)
         loginAPI.getUserDate(!this.props.match.params.userId ? this.props.activeIDUser : this.props.match.params.userId).then(responce => {
-           
             this.props.selectUser({ ...responce, ...responce.contacts, ...responce.photos })
             this.props.updatePreloader(false)
         }

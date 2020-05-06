@@ -4,7 +4,8 @@
 let initialState = {
     users: [],
     urlPage: { page: 1, pageSize: 10, totalUsersCount: 0 },
-    preloaded: false
+    preloaded: false,
+    followingInProgress: []
 }
 
 const UsersReducer = (state = initialState, active) => {
@@ -46,7 +47,17 @@ const UsersReducer = (state = initialState, active) => {
             }
         case "UPDATE_PRELOAFER":
             {
-                return {...state,preloaded:active.isFetching }
+                return { ...state, preloaded: active.isFetching }
+            }
+        case "UPDATE_FOLLOWING":
+            {
+                return {
+                    ...state, followingInProgress:
+                        active.followingInProgress ?
+                            [...state.followingInProgress, active.idUser] :
+                            [state.followingInProgress.filter(id => id !== active.idUser)]
+
+                }
             }
 
 
@@ -60,7 +71,8 @@ export const unfollow = (userId) => ({ type: 'UNFOLLOW', userId: userId })
 export const setUsers = (user) => ({ type: 'SET_USERS', users: user })
 export const updateTotalCount = (int) => ({ type: 'UPDATE_TOTAL_COUNT', count: int })
 export const updatePage = (int) => ({ type: 'UPDATE_PAGE', count: int })
-export const updatePreloader = (count) => ({ type: 'UPDATE_PRELOAFER',isFetching:count})
+export const updatePreloader = (count) => ({ type: 'UPDATE_PRELOAFER', isFetching: count })
+export const updateFollowing = (followingInProgress, idUser) => ({ type: 'UPDATE_FOLLOWING', followingInProgress, idUser })
 
 
 export default UsersReducer

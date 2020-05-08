@@ -14,7 +14,7 @@ const Users = (props) => {
             {
                 pages.map(p => {
 
-                    return <span onClick={() => props.updatePage(p)} className={props.urlPage.page === p ? s.selectedPage : ""}>{p + " "}</span>
+                    return <span onClick={() => props.updatePage(p)} className={props.urlPage.countPage === p ? s.selectedPage : ""}>{p + " "}</span>
                 })
 
             }

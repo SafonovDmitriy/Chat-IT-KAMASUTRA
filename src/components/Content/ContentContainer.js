@@ -1,5 +1,5 @@
 
-import { updatePostText, addPost, likeForPost, updatePreloader } from '../../redux/Reducers/Profile-reducer';
+import { updatePostText, addPost, likeForPost, getUserDate } from '../../redux/Reducers/Profile-reducer';
 import { connect } from 'react-redux';
 
 
@@ -11,16 +11,13 @@ import Profile from '../Profile/Profile';
 import Preloader from '../common/Preloader/Preloader';
 import { selectUser } from './../../redux/Reducers/Profile-reducer';
 import { withRouter } from 'react-router-dom';
-import { loginAPI } from './../../api/api';
+
+
+
 
 class Content extends React.Component {
     componentDidMount() {
-        this.props.updatePreloader(true)
-        loginAPI.getUserDate(!this.props.match.params.userId ? this.props.activeIDUser : this.props.match.params.userId).then(responce => {
-            this.props.selectUser({ ...responce, ...responce.contacts, ...responce.photos })
-            this.props.updatePreloader(false)
-        }
-        )
+        this.props.getUserDate(this.props.match, this.props.activeIDUser)
     }
     render() {
         return this.props.preloader ? <Preloader /> : <div className={s.wrapper}>
@@ -63,6 +60,7 @@ export default connect(mapStateToProps, {
     addPost,
     updatePostText,
     likeForPost,
-    updatePreloader,
-    selectUser
+    selectUser,
+    getUserDate,
+
 })(withUrlData);

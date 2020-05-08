@@ -1,4 +1,5 @@
 
+import { loginAPI } from './../../api/api';
 let common
 export const sub = (obs) => {
     common = obs
@@ -81,9 +82,17 @@ export const updatePostText = (text) =>
 export const addPost = () => ({ type: 'ADD-POST' })
 export const updatePreloader = (value) => ({ type: 'UPDETE-PRELOADER', value:value })
 export const selectUser = (user) => ({ type: 'SELECT-USER', user: user })
-export const likeForPost = (value) => ({
-    type: "LIKE-FOR-POST",
-    value: value
-})
+export const likeForPost = (value) => ({type: "LIKE-FOR-POST",value: value})
+
+export const getUserDate = (match,activeIDUser) => {
+    return (dispatch) => {
+        dispatch(updatePreloader(true))
+        loginAPI.getUserDate(!match.params.userId ? activeIDUser : match.params.userId).then(responce => {
+            dispatch(selectUser({ ...responce, ...responce.contacts, ...responce.photos }))
+            dispatch(updatePreloader(false))
+        }
+        )
+    }
+}
 
 export default ProfileReducer

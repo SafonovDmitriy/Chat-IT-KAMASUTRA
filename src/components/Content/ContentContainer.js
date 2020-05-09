@@ -17,20 +17,23 @@ import { withRouter } from 'react-router-dom';
 
 class Content extends React.Component {
     componentDidMount() {
+
         this.props.getUserDate(this.props.match, this.props.activeIDUser)
     }
     render() {
-        return this.props.preloader ? <Preloader /> : <div className={s.wrapper}>
-            <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
-            <Profile className={s.Profile}
-                user={this.props.selUser}
-            />
+        return this.props.preloader ? <Preloader /> :
+            <>
+                <div className={s.wrapper}>
+                    <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
+                    <Profile className={s.Profile}
+                        user={this.props.selUser}
+                    />
 
-            {/* <NewPost className={s.NewPost}
+                    {/* <NewPost className={s.NewPost}
                 addPost={this.props.addPost}
                 updatePostText={this.props.updatePostText}
             /> */}
-            {/* <div className={s.Post}>
+                    {/* <div className={s.Post}>
                 {this.props.arrPost.map(posts => <Post
                     posts={posts}
                     ProfileDate={this.props.ProfileDate}
@@ -39,7 +42,8 @@ class Content extends React.Component {
                 }
 
             </div> */}
-        </div>
+                </div>
+            </>
     }
 
 }

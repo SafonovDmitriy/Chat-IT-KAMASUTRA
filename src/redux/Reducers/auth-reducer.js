@@ -19,10 +19,8 @@ const AuthReducer = (state = initialState, active) => {
 
     switch (active.type) {
         case "SET_DATE_USER":
-
             return { ...state, ...active.data, isAuth: true }
         case "SET_PICTURE_USER":
-
             return { ...state, avatar: active.urlPicture }
         default: return { ...state }
     }

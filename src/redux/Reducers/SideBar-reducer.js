@@ -1,4 +1,5 @@
 
+
 let initialState = {
     activeDialog: -1,
     activeURL: "",
@@ -17,23 +18,26 @@ let initialState = {
 const SideBarReducer = (state = initialState, active) => {
 
 
-    
+
     switch (active.type) {
 
         case "UPDATE-URL":
-            return { ...state, activeURL: active.url }
+            return { ...state, activeURL: active.url };
         case "UPDATE-PROFILE-URL":
             state.sideBarMenu.map((item) => {
-                console.log("/profile/" + active.idUser)
                 if (item.href === "/profile/") {
-                    
-                    return { ...state.sideBarMenu, href: "/profile/" + active.idUser }
-                } return { ...state }
-            }
-            )
-            break
+                    item.href = item.href + active.idUser
+                    return { ...state.sideBarMenu[item.id], ...item };
+                } else {
+                    return { ...state.sideBarMenu[item.id] };
+                }
 
-        default: return { ...state }
+            })
+            return { ...state }
+            
+
+
+        default: return state
     }
 }
 

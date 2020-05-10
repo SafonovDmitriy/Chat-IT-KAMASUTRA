@@ -3,7 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
-import { Route, Redirect, } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import ContentContainer from './components/Content/ContentContainer.js';
 import DialogsContainer from './components/Dialogs/DialogsContainer.js';
 import SideBarContainer from './components/SideBar/SideBarContainer.js';
@@ -15,34 +15,32 @@ library.add(fab, faCheckSquare, faCoffee)
 
 function App(props) {
 
-
-
-
-  return (
-
+  return (<>
+ {console.log(props)}
+ <Redirect to={!props.isAuth ? "/login/" : "/profile/" + props.activeIDUser}></Redirect>
     <div className="App">
-      <Redirect to=""/>
-        <div className="appHeader"><HeaderContainer /></div>
 
-        <div className="appSideBar">  <SideBarContainer
-        /></div>
-        <div className="appContent">
-          <Route path='/profile/:userId?/' render={() => <ContentContainer
+      <div className="appHeader"><HeaderContainer /></div>
 
-          />} />
-          <Route path="/messages/" render={() => <DialogsContainer
+      <div className="appSideBar">  <SideBarContainer
+      /></div>
+      <div className="appContent">
+        <Route path='/profile/:userId?/' render={() => <ContentContainer
 
-          />} />
-          <Route path="/news" />
-          <Route path="/music" />
-          <Route path="/login" render={() => <Login />} />
-          <Route path="/FindUser" render={() => <UsersContainer />} />
+        />} />
+        <Route path="/messages/" render={() => <DialogsContainer
 
-          <Route path="/setting" />
+        />} />
+        <Route path="/news" />
+        <Route path="/music" />
+        <Route path="/login" render={() => <Login />} />
+        <Route path="/FindUser" render={() => <UsersContainer />} />
 
-        </div>
+        <Route path="/setting" />
+
+      </div>
     </div>
-
+  </>
   );
 }
 

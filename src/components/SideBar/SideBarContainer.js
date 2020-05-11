@@ -2,6 +2,7 @@ import SideBar from './SideBar.jsx';
 import { updateUrlActive ,updateProfileURL} from '../../redux/Reducers/SideBar-reducer.js';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
 
 
@@ -20,5 +21,8 @@ let mapDispatchToProps = (dispatch) => {
     updateProfileURL:(idUser)=>dispatch(updateProfileURL(idUser))
   }
 }
-let withUrlData = withRouter(SideBar)
-export default connect(mapStateToProps, mapDispatchToProps)(withUrlData)
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+)(SideBar)

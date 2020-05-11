@@ -8,6 +8,7 @@ let initialState = {
 }
 
 const UsersReducer = (state = initialState, active) => {
+    
     let copyState = { ...state }
     switch (active.type) {
 
@@ -22,6 +23,7 @@ const UsersReducer = (state = initialState, active) => {
             }
             break;
         case "UNFOLLOW":
+        
             copyState = {
                 ...state, users: state.users.map(u => {
                     if (u.id === active.userId) {
@@ -102,7 +104,7 @@ export const unfollowT = (idUser) => {
         dispatch(updateFollowing(true, idUser))
         subscribeAPI.deleteFollow(idUser).then(response => {
             if (response.resultCode === 0) {
-                dispatch(follow(idUser))
+                dispatch(unfollow(idUser))
             }
             dispatch(updateFollowing(false, idUser))
         })

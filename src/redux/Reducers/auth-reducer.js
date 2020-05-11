@@ -47,6 +47,7 @@ export const login = () => {
                 loginAPI.getUserDate(response.data.id).then(response2 => {
                     dispatch(setPictureUser(response2.photos.small === null ? dontAvatar : response2.photos.small))
                     dispatch(preloaderForLogin(false))
+                    
                 })
 
             } else {

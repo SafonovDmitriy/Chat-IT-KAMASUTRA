@@ -3,7 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import ContentContainer from './components/Content/ContentContainer.js';
 import DialogsContainer from './components/Dialogs/DialogsContainer.js';
 import SideBarContainer from './components/SideBar/SideBarContainer.js';
@@ -14,10 +14,10 @@ library.add(fab, faCheckSquare, faCoffee)
 
 
 function App(props) {
-
+ 
   return (<>
- {console.log(props)}
- <Redirect to={!props.isAuth ? "/login/" : "/profile/" + props.activeIDUser}></Redirect>
+
+
     <div className="App">
 
       <div className="appHeader"><HeaderContainer /></div>

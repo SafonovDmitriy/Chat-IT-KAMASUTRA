@@ -18,6 +18,7 @@ class UsersContainer extends React.Component {
                 urlPage={this.props.urlPage}
                 users={this.props.users}
                 followingInProgress={this.props.followingInProgress}
+                isAuth={this.props.isAuth}
                 updatePage={(int) => this.props.getUsers(int, this.props.urlPage.pageSize)}
                 follow={(idUser) => this.props.followT(idUser)}
                 unfollow={(idUser) => this.props.unfollowT(idUser)}
@@ -34,7 +35,8 @@ let mapStateToProps = (state) => {
         users: s.users,
         urlPage: s.urlPage,
         preloaded: s.preloaded,
-        followingInProgress: s.followingInProgress
+        followingInProgress: s.followingInProgress,
+        isAuth:state.auth.isAuth
     }
 }
 

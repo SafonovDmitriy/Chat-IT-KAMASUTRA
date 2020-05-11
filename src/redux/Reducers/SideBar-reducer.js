@@ -8,7 +8,7 @@ let initialState = {
             { id: 0, title: "Profile", href: '/profile/', auth: true },
             { id: 1, title: "Messages", href: "/messages/", auth: true },
             { id: 2, title: "News", href: "/news/", auth: false },
-            { id: 3, title: "Music", href: "/music/", auth: true },
+            { id: 3, title: "Music", href: "/music/", auth: false },
             { id: 4, title: "Find User", href: "/FindUser/", auth: false },
             { id: 5, title: "Setting", href: "/setting/", auth: false }
         ]

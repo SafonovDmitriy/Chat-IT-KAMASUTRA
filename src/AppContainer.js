@@ -5,7 +5,6 @@ import App from './App.js';
 import { login } from './redux/Reducers/auth-reducer';
 import { updateProfileURL } from './redux/Reducers/SideBar-reducer.js';
 import Preloader from './components/common/Preloader/Preloader';
-import { Redirect } from 'react-router-dom';
 
 
 
@@ -15,10 +14,14 @@ class AppContainer extends React.Component {
   }
   render() {
     return this.props.preloader ? <Preloader /> : <>
-
+    
+    
+     
+    {/* {this.props.isAuth===false ? (<Redirect to="/login/" />) : ''} */}
       <App activeIDUser={this.props.activeIDUser}
         isAuth={this.props.isAuth}
       />
+      
     </>
 
   }

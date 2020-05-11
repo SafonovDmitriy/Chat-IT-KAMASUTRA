@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Profile.module.css'
-import userPhoto from '../../assets/images/123.png'
+import userPhoto from '../../../assets/images/123.png'
 const Profile = (props) => {
    
   

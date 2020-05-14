@@ -17,18 +17,20 @@ import { compose } from 'redux';
 
 
 
+
 class Content extends React.Component {
     componentDidMount() {
         this.props.getUserDate(this.props.match, this.props.activeIDUser)
-
+        console.log(this.props.selUser.status)
     }
     render() {
         return this.props.preloader ? <Preloader /> :
             <>
                 <div className={s.wrapper}>
-                    <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" />
+                    {/* <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" /> */}
                     <Profile className={s.Profile}
                         user={this.props.selUser}
+                      
                     />
 
                     {/* <NewPost className={s.NewPost}
@@ -57,14 +59,14 @@ let mapStateToProps = (state) => {
         activeIDUser: state.auth.activeIDUser,
         preloader: state.ProfilePage.preloader,
         selUser: state.ProfilePage.selectUser,
-
+     
 
     }
 }
 
 
 export default compose(
-    connect(mapStateToProps, {addPost,updatePostText,likeForPost,selectUser,getUserDate,}),
+    connect(mapStateToProps, {addPost,updatePostText,likeForPost,selectUser,getUserDate}),
     withRouter
     
     )(Content);

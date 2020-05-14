@@ -32,6 +32,13 @@ export const UsersAPI = {
         })
     }
 }
+export const UserStatusAPI = {
+    getStatus(idUser){
+        return instance.get(`/profile/status/${idUser}`).then(response=>{
+            return response
+        })
+    }
+}
 
 
 export const subscribeAPI = {

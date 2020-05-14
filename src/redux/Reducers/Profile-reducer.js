@@ -13,11 +13,11 @@ let initialState = {
     NewPostText: "",
     selectUser: {
         contacts: { facebook: null, github: null, instagram: null, mainLink: null, twitter: null, vk: null, website: null, youtube: null },
-        status: "",
         photos: {
             large: null,
             small: null
         },
+        status: null,
         aboutMe: null,
         fullName: null,
         lookingForAJob: null,
@@ -56,12 +56,7 @@ const ProfileReducer = (state = initialState, active) => {
 
             return { ...state, preloader: active.value }
         case "GET-USER-STATUS":
-            let newStatus=""
-            
-            if(!active.status) {newStatus="newStatus"}
-            else{newStatus=active.status
-            }
-            return { ...state,...state.selectUser, status: newStatus }
+            return { ...state, status: active.status }
 
 
         case "LIKE-FOR-POST":
@@ -101,12 +96,22 @@ export const getUserDate = (match, activeIDUser) => {
         dispatch(updatePreloader(true))
         loginAPI.getUserDate(!match.params.userId ? activeIDUser : match.params.userId).then(responce => {
             dispatch(selectUser({ ...responce, ...responce.contacts, ...responce.photos }))
-            UserStatusAPI.getStatus(activeIDUser).then(responce1 => {
-                dispatch(getUserStatus(responce1.data))
-            })
-            dispatch(updatePreloader(false))
+
         }
         )
+        
+        UserStatusAPI.getStatus(activeIDUser).then(responce => {
+            debugger
+            dispatch(getUserStatus(responce.data))
+        })
+        dispatch(updatePreloader(false))
+    }
+}
+export const setStatusUser = (status) => {
+    return (dispatch) => {
+        UserStatusAPI.setStatus(status).then(responce => {
+            console.log(responce)
+        })
     }
 }
 

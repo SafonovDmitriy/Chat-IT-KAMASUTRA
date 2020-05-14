@@ -13,7 +13,10 @@ const Profile = (props) => {
         <div className={s.info}>
             <h1>Name: {props.user.fullName}</h1>
             
-            <p>AboutMe:<ProfileStatus status={props.user.status}/></p>
+            <p>AboutMe:<ProfileStatus 
+                status={props.status}
+                setStatusUser={()=>props.setStatusUser()}
+            /></p>
             <p>Facebook: {props.user.contacts.facebook}</p>
             <p>Instagram: {props.user.contacts.instagram}</p>
         </div>

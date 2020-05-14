@@ -1,5 +1,5 @@
 
-import { updatePostText, addPost, likeForPost, getUserDate } from '../../redux/Reducers/Profile-reducer';
+import { updatePostText, addPost, likeForPost, getUserDate,setStatusUser } from '../../redux/Reducers/Profile-reducer';
 import { connect } from 'react-redux';
 
 
@@ -20,8 +20,8 @@ import { compose } from 'redux';
 
 class Content extends React.Component {
     componentDidMount() {
-        this.props.getUserDate(this.props.match, this.props.activeIDUser)
-        console.log(this.props.selUser.status)
+        this.props.getUserDate(this.props.match, 2)
+      
     }
     render() {
         return this.props.preloader ? <Preloader /> :
@@ -30,7 +30,8 @@ class Content extends React.Component {
                     {/* <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" /> */}
                     <Profile className={s.Profile}
                         user={this.props.selUser}
-                      
+                        status={this.props.status}
+                        setStatusUser={()=>this.props.setStatusUser()}
                     />
 
                     {/* <NewPost className={s.NewPost}
@@ -59,6 +60,7 @@ let mapStateToProps = (state) => {
         activeIDUser: state.auth.activeIDUser,
         preloader: state.ProfilePage.preloader,
         selUser: state.ProfilePage.selectUser,
+        status:state.ProfilePage.status
      
 
     }
@@ -66,7 +68,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, {addPost,updatePostText,likeForPost,selectUser,getUserDate}),
+    connect(mapStateToProps, {addPost,updatePostText,likeForPost,selectUser,getUserDate,setStatusUser}),
     withRouter
     
     )(Content);

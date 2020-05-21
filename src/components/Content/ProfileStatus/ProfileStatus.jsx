@@ -1,34 +1,40 @@
 import React from 'react';
 // import s from './ProfileStatus.module.css'
 
-
 class ProfileStatus extends React.Component {
-
-
     state = {
-        statusElement: React.createRef(),
         editMode: false,
         textStatus: this.props.status
+
+    }
+
+    componentDidUpdate(prevProps,prevState) {
+        console.log(prevState)
     }
     activateEditMode = () => {
-        this.setState({ editMode: true })
+        if (this.props.activeIDUser === this.props.userId) {
+            this.setState({ editMode: true })
+        }
 
     }
-    deactivateEditMode = (newStatus) => {
+    deactivateEditMode = (e) => {
+        if (e.currentTarget.value !== this.state.textStatus) {
+            this.props.setStatusUser(e.currentTarget.value)
+        }
+
         this.setState({ editMode: false })
-        debugger
-        this.props.setStatusUser(newStatus)
     }
-    updateStatus(newText) {
-        this.setState({ textStatus: newText })
-
+    updateStatus = (e) => {
+        this.setState({ textStatus: e.currentTarget.value })
     }
     render() {
+
         return <>
+
             {
-                !this.state.editMode ? <span onDoubleClick={() => this.activateEditMode()}>{!this.state.textStatus?"newStatus":this.state.textStatus}</span> :
+                !this.state.editMode ? <span onDoubleClick={() => this.activateEditMode()}>{this.props.status ? this.state.textStatus : "newStatus"}</span> :
                     <input ref={this.state.statusElement} autoFocus
-                        value={this.state.textStatus} onChange={() => this.updateStatus(this.state.statusElement.current.value)} onBlur={() => this.deactivateEditMode(this.state.statusElement.current.value)} />
+                        value={this.state.textStatus} onChange={this.updateStatus} onBlur={this.deactivateEditMode} />
 
             }
 

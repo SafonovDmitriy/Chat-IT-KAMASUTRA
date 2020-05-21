@@ -1,5 +1,5 @@
 
-import { updatePostText, addPost, likeForPost, getUserDate,setStatusUser } from '../../redux/Reducers/Profile-reducer';
+import { updatePostText, addPost, likeForPost, getUserDate, setStatusUser } from '../../redux/Reducers/Profile-reducer';
 import { connect } from 'react-redux';
 
 
@@ -20,9 +20,10 @@ import { compose } from 'redux';
 
 class Content extends React.Component {
     componentDidMount() {
-        this.props.getUserDate(this.props.match, 2)
-      
+        this.props.getUserDate(this.props.match, this.props.selUser.userId)
+        console.log(this.props.match)
     }
+
     render() {
         return this.props.preloader ? <Preloader /> :
             <>
@@ -30,8 +31,9 @@ class Content extends React.Component {
                     {/* <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" /> */}
                     <Profile className={s.Profile}
                         user={this.props.selUser}
+                        activeIDUser={this.props.activeIDUser}
                         status={this.props.status}
-                        setStatusUser={()=>this.props.setStatusUser()}
+                        setStatusUser={(status) => this.props.setStatusUser(status)}
                     />
 
                     {/* <NewPost className={s.NewPost}
@@ -60,15 +62,26 @@ let mapStateToProps = (state) => {
         activeIDUser: state.auth.activeIDUser,
         preloader: state.ProfilePage.preloader,
         selUser: state.ProfilePage.selectUser,
-        status:state.ProfilePage.status
-     
+        status: state.ProfilePage.status
+
+
+    }
+}
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => dispatch(addPost()),
+        updatePostText: (text) => dispatch(updatePostText(text)),
+        likeForPost: (value) => dispatch(likeForPost(value)),
+        selectUser: (user) => dispatch(selectUser(user)),
+        getUserDate: (match, activeIDUser) => dispatch(getUserDate(match, activeIDUser)),
+        setStatusUser: (status) => dispatch(setStatusUser(status))
+
 
     }
 }
 
-
 export default compose(
-    connect(mapStateToProps, {addPost,updatePostText,likeForPost,selectUser,getUserDate,setStatusUser}),
+    connect(mapStateToProps, mapDispatchToProps),
     withRouter
-    
-    )(Content);
+
+)(Content);

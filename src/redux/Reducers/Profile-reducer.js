@@ -12,6 +12,7 @@ let initialState = {
     ],
     NewPostText: "",
     selectUser: {
+        userId: undefined,
         contacts: { facebook: null, github: null, instagram: null, mainLink: null, twitter: null, vk: null, website: null, youtube: null },
         photos: {
             large: null,
@@ -56,6 +57,7 @@ const ProfileReducer = (state = initialState, active) => {
 
             return { ...state, preloader: active.value }
         case "GET-USER-STATUS":
+
             return { ...state, status: active.status }
 
 
@@ -89,28 +91,39 @@ export const updatePreloader = (value) => ({ type: 'UPDETE-PRELOADER', value: va
 export const selectUser = (user) => ({ type: 'SELECT-USER', user: user })
 export const likeForPost = (value) => ({ type: "LIKE-FOR-POST", value: value })
 export const updateToogle = (value) => ({ type: "LIKE-FOR-POST", value: value })
-export const getUserStatus = (status) => ({ type: "GET-USER-STATUS", status:status })
+export const getUserStatus = (status) => ({ type: "GET-USER-STATUS", status: status })
 
 export const getUserDate = (match, activeIDUser) => {
     return (dispatch) => {
         dispatch(updatePreloader(true))
-        loginAPI.getUserDate(!match.params.userId ? activeIDUser : match.params.userId).then(responce => {
-            dispatch(selectUser({ ...responce, ...responce.contacts, ...responce.photos }))
-
+        if (match.params.userId !== activeIDUser) {
+            loginAPI.getUserDate(!match.params.userId ? activeIDUser : match.params.userId).then(responce => {
+                dispatch(selectUser({ ...responce, ...responce.contacts, ...responce.photos }))
+            }
+            )
         }
-        )
-        
-        UserStatusAPI.getStatus(activeIDUser).then(responce => {
-            debugger
-            dispatch(getUserStatus(responce.data))
-        })
-        dispatch(updatePreloader(false))
+
+        if (activeIDUser !== undefined) {
+            UserStatusAPI.getStatus(activeIDUser).then(responce => {
+
+                dispatch(getUserStatus(responce.data))
+                dispatch(updatePreloader(false))
+            })
+        }
+
+
     }
 }
 export const setStatusUser = (status) => {
     return (dispatch) => {
         UserStatusAPI.setStatus(status).then(responce => {
+
             console.log(responce)
+            if (responce.data.resultCode === 0) {
+                dispatch(getUserStatus(status))
+
+            }
+
         })
     }
 }

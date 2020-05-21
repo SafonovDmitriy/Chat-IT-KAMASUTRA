@@ -3,6 +3,7 @@ import userPhoto from '../../assets/images/123.png'
 import s from './Users.module.css'
 import { NavLink } from 'react-router-dom';
 
+
 const Users = (props) => {
     
     let pagesCount = Math.ceil(props.urlPage.totalUsersCount / props.urlPage.pageSize)
@@ -21,10 +22,12 @@ const Users = (props) => {
             }
         </div>
         {props.users.map(u => <div key={u.id}>
+            
             <div className={s.item}>
                 <div className={s.imgFoll}>
                     <NavLink to={'/profile/' + u.id}>
-                        <img className={s.avatar} src={u.photos.small !== null ? u.photos.small : userPhoto} alt='' />
+                    
+                        <img onClick={props.getUserStatus(u.status)} className={s.avatar} src={u.photos.small !== null ? u.photos.small : userPhoto} alt='' />
                     </NavLink>
                     {props.isAuth ? 
                     u.followed === false ?

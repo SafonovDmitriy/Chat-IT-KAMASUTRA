@@ -15,7 +15,9 @@ const Profile = (props) => {
             
             <p>AboutMe:<ProfileStatus 
                 status={props.status}
-                setStatusUser={()=>props.setStatusUser()}
+                setStatusUser={(status)=>props.setStatusUser(status)}
+                activeIDUser={props.activeIDUser}
+                userId={props.user.userId}
             /></p>
             <p>Facebook: {props.user.contacts.facebook}</p>
             <p>Instagram: {props.user.contacts.instagram}</p>

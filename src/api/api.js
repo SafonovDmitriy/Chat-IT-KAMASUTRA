@@ -33,13 +33,15 @@ export const UsersAPI = {
     }
 }
 export const UserStatusAPI = {
-    getStatus(idUser){
-        return instance.get(`/profile/status/${idUser}`).then(response=>{
+    getStatus(idUser) {
+        return instance.get(`profile/status/${idUser}`).then(response => {
+            
             return response
         })
     },
-    setStatus(status){
-        return instance.put(`/profile/status/`,{status:status}).then(response=>{
+    setStatus(status) {
+
+        return instance.put(`profile/status/`, { status }).then(response => {
             return response
         })
     }

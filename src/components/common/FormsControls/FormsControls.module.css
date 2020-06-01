@@ -1,0 +1,22 @@
+.box input {
+    border: solid 2px black;
+    border-radius: 25px;
+    padding: 5px;
+    transition: 1s;
+    background-color: cornflowerblue;
+    color: greenyellow;
+}
+
+.error {
+    margin: 12px 0px;
+}
+
+.boxError input, .error span {
+    color: red;
+    color:  red;
+    border: solid red 2px;
+    border-radius: 25px;
+    padding: 5px;
+    transition: 1s;
+    background-color: darkblue;
+}

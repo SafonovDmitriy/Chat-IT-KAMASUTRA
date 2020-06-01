@@ -3,17 +3,18 @@ import s from './Dialogs.module.css'
 import DialogList from './DialogList/DialogList';
 import MessageList from './MessageList/MessageList';
 import { TextBox, StyllButton } from '../inputs/inputs';
+import { reduxForm } from 'redux-form';
 
 
 
 
 const Dialogs = (props) => {
-    let newElement = React.createRef()
-    let SendMessage = () => {
-        props.sandMassageActiveCreator(newElement.current.value);
-        newElement.current.value = ""
+    const onSubmit = (value) => {
+        
     }
-    
+
+
+
     return <div className={s.wrapper}>
         <DialogList className={s.NamesList}
             common={props.common}
@@ -25,19 +26,25 @@ const Dialogs = (props) => {
             activeIDUser={props.common.activeIDUser}
             arrMessage={props.DialogePage.arrMessage}
         />
+        <AddNewMessageRedux className={s.Sender} onSubmit={onSubmit} />
+    </div >
 
-        <div className={s.Sender}>
-            <TextBox
-                value={props.DialogePage.NewMessageText}
-                placeholder="Send Message"
-                refs={newElement}
-                onChange={() => props.updateMessageTextActiveCreator(newElement.current.value)}
-            />
-            <div className={s.SendButtom}>
-                <StyllButton value="Sand massage" onClick={SendMessage} />
-            </div>
-
-        </div>
-    </div>
 }
+
+
+const AddNewMessage = (props) => {
+
+    return <div className={s.Sender}>
+        <form onSubmit={props.handleSubmit}>
+            <div><TextBox placeholder="Send Message" name={"newMessage"} component={"input"} /></div>
+            <div className={s.SendButtom}><StyllButton  value="Send"/></div>
+        </form>
+    </div>
+
+}
+
+const AddNewMessageRedux = reduxForm({
+    form: 'newMessageForm'
+})(AddNewMessage)
+
 export default Dialogs;

@@ -12,13 +12,26 @@ const instance = Axios.create({
 export const loginAPI = {
     auth() {
         return instance.get('auth/me').then(response => {
+
             return response.data
+
         }
         )
+    },
+    login(email, password, rememberMe = false) {
+        return instance.post('auth/login', { email, password, rememberMe }).then(response => {
+            return response.data
+        })
+    },
+    outlogin() {
+        return instance.delete('auth/login').then(response => {
+            return response.data
+        })
     },
 
     getUserDate(idUser) {
         return instance.get(`profile/${idUser}`).then(response => {
+
             return response.data
         })
     }
@@ -35,7 +48,7 @@ export const UsersAPI = {
 export const UserStatusAPI = {
     getStatus(idUser) {
         return instance.get(`profile/status/${idUser}`).then(response => {
-            
+
             return response
         })
     },

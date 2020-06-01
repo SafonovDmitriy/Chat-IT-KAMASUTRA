@@ -1,23 +1,26 @@
 import React from 'react';
 import s from './inputs.module.css'
+import { Field } from 'redux-form';
 
 class TextBox extends React.Component {
   render() {
-    return <input className={s.TextBox} type="text"
-      value={this.props.value}
+
+    return <Field
+      className={s.TextBox}
       placeholder={this.props.placeholder}
-      ref={this.props.refs}
-      onChange={this.props.onChange}
+      name={this.props.name}
+      component={"input"}
     />
   }
 
 }
 class StyllButton extends React.Component {
   render() {
-    return <input className={s.StyllButton} type="button"
-      value={this.props.value}
-      onClick={this.props.onClick}
-    />
+    return <button
+      className={s.StyllButton}
+    >
+      {this.props.value}
+    </button>
   }
 }
 

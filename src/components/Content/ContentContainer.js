@@ -21,7 +21,7 @@ import { compose } from 'redux';
 class Content extends React.Component {
     componentDidMount() {
         this.props.getUserDate(this.props.match, this.props.selUser.userId)
-        console.log(this.props.match)
+      
     }
 
     render() {

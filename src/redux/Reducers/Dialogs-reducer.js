@@ -18,10 +18,6 @@ const DialogsReducer = (state = initialState, active) => {
     copyState.arrMessage = [...state.arrMessage]
 
     switch (active.type) {
-        case "UPDATE-MESSAGE-TEXT":
-            copyState.NewMessageText = active.value;
-
-            break;
         case "SAVE-ACTIVE-DIALOG":
             common.activeDialog = active.value;
             break;
@@ -46,10 +42,7 @@ const DialogsReducer = (state = initialState, active) => {
 }
 
 
-export const updateMessageTextActiveCreator = (text) => ({
-    type: "UPDATE-MESSAGE-TEXT",
-    value: text
-})
+
 export const sandMassageActiveCreator = (message) => ({
     type: "SAND-MASSAGE",
     value: message

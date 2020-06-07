@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Header.module.css'
-import { NavLink } from 'react-router-dom';
-import { logOut } from './../../redux/Reducers/auth-reducer';
+import { NavLink, Redirect } from 'react-router-dom';
+
 
 
 class Header extends React.Component {
@@ -11,8 +11,10 @@ class Header extends React.Component {
   avaCheck = () => {
     this.setState({ ...this.state, avaBox: !this.state.avaBox })
   }
-  logOut=()=>{
-    logOut();
+  logOut = () => {
+    this.setState({ ...this.state, avaBox: !this.state.avaBox })
+    this.props.logOut();
+    return <Redirect to="/login/" />
   }
   render() {
     return <div className={s.wrapper}>
@@ -27,17 +29,27 @@ class Header extends React.Component {
       </ul></div>
 
 
-      {
-        <div className={s.loginBlock}>
-          {this.props.isAuth === false ? <NavLink to="/login/">Login</NavLink> :
-            <div>
-              {this.state.avaBox === true ? <span onClick={this.logOut}>EXIT</span> : undefined}
-              <img onClick={this.avaCheck} alt="" src={this.props.avatar} />
-            </div>
-          }
 
-        </div>
-      }
+
+
+      <div>
+        {this.state.avaBox === true ?
+          <div className={s.loginMenu}>
+
+            <ul >
+              <li onClick={this.logOut}>EXIT</li>
+            </ul>
+
+
+          </div> : undefined}
+      </div>
+      <div>
+        {this.props.isAuth === false ? <NavLink to="/login/">Login</NavLink> :
+          <div className={s.loginPict}>
+            <img onClick={this.avaCheck} alt="" src={this.props.avatar} />
+          </div>}
+      </div>
+
 
     </div>
 

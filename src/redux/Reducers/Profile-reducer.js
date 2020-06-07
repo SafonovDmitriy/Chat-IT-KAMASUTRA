@@ -1,9 +1,6 @@
 
 import { loginAPI, UserStatusAPI } from './../../api/api';
-let common
-export const sub = (obs) => {
-    common = obs
-}
+
 let initialState = {
     preloader: false,
     arrPost: [
@@ -38,7 +35,7 @@ const ProfileReducer = (state = initialState, active) => {
             if (state.NewPostText !== "") {
                 let NewItem = {
                     id: state.arrPost.length,
-                    autor: common.activeIDUser,
+                    autor: state.getState().auth.activeIDUser,
                     post: state.NewPostText,
                     likes: []
                 }
@@ -63,11 +60,11 @@ const ProfileReducer = (state = initialState, active) => {
 
         case "LIKE-FOR-POST":
             copyState.arrPost = [...state.arrPost]
-            let like = { id: common.activeIDUser }
+            let like = { id: state.getState().auth.activeIDUser }
             let newArr = []
             let boolLike = false;
             copyState.arrPost[active.value].likes.map((post) => {
-                common.activeIDUser === post.id ? boolLike = true : newArr.push(post);
+                state.getState().auth.activeIDUser === post.id ? boolLike = true : newArr.push(post);
 
                 return newArr
             })
@@ -90,26 +87,31 @@ export const addPost = () => ({ type: 'ADD-POST' })
 export const updatePreloader = (value) => ({ type: 'UPDETE-PRELOADER', value: value })
 export const selectUser = (user) => ({ type: 'SELECT-USER', user: user })
 export const likeForPost = (value) => ({ type: "LIKE-FOR-POST", value: value })
-export const updateToogle = (value) => ({ type: "LIKE-FOR-POST", value: value })
 export const getUserStatus = (status) => ({ type: "GET-USER-STATUS", status: status })
 
-export const getUserDate = (match, activeIDUser) => {
+export const getUserDate = (userId) => {
+
     return (dispatch) => {
-        dispatch(updatePreloader(true))
-        if (match.params.userId !== activeIDUser) {
-            loginAPI.getUserDate(!match.params.userId ? activeIDUser : match.params.userId).then(responce => {
+
+        if (userId) {
+            dispatch(updatePreloader(true))
+            loginAPI.getUserDate(userId).then(responce => {
+
                 dispatch(selectUser({ ...responce, ...responce.contacts, ...responce.photos }))
+
             }
             )
-        }
 
-        if (activeIDUser !== undefined) {
-            UserStatusAPI.getStatus(activeIDUser).then(responce => {
+            UserStatusAPI.getStatus(userId).then(responce2 => {
 
-                dispatch(getUserStatus(responce.data))
+                dispatch(getUserStatus(responce2.data))
                 dispatch(updatePreloader(false))
             })
         }
+
+
+
+
 
 
     }
@@ -117,8 +119,6 @@ export const getUserDate = (match, activeIDUser) => {
 export const setStatusUser = (status) => {
     return (dispatch) => {
         UserStatusAPI.setStatus(status).then(responce => {
-
-            console.log(responce)
             if (responce.data.resultCode === 0) {
                 dispatch(getUserStatus(status))
 

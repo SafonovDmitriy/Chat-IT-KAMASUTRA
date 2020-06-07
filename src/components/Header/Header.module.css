@@ -2,8 +2,8 @@
     background-color: darkgreen;
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: 175px 1fr 1fr;
-    grid-template-areas: "logo menu login";
+    grid-template-columns: 180px 1fr 150px 150px;
+    grid-template-areas: "logo menu list picture";
 }
 
 .logo {
@@ -16,6 +16,7 @@
     grid-area: menu;
     margin: auto;
     padding-top: 45px;
+    float: left;
 }
 
 .headerMenu li {
@@ -27,17 +28,29 @@
     font-size: 18px;
     display: inline-flex;
 }
-.loginBlock{
-    grid-area: login;
+
+
+
+.loginMenu {
+    grid-area: list;
+    border: solid 1px rgb(211, 144, 1);
+    border-radius: 5px;
+    margin-top: 15px;
 }
-.loginBlock a{
+
+.loginMenu li {
+    width: 50px;
+}
+
+.loginMenu a {
     width: 50px;
     float: right;
     margin: 5% 15%;
-   
 }
-.loginBlock img{
-    width: 75px;
+
+.loginPict img {
+    width: 65%;
     float: right;
     margin: 5% 15%;
+    grid-area: picture;
 }

@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
+import { logOut } from './../../redux/Reducers/auth-reducer';
 
 class HeaderContainer extends React.Component {
     render() {
@@ -26,7 +27,10 @@ let mapStateToProps = (state) => {
         avatar: state.auth.avatar
     }
 }
-export default connect(mapStateToProps, {
-    
+let mapDispatchToProps = (dispatch) => {
 
-})(HeaderContainer)
+    return {
+     logOut:()=>dispatch(logOut())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer)

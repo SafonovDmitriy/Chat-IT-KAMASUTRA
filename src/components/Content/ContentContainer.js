@@ -19,9 +19,16 @@ import { compose } from 'redux';
 
 
 class Content extends React.Component {
-    componentDidMount() {
-        this.props.getUserDate(this.props.match, this.props.selUser.userId)
-      
+
+    componentWillMount() {
+
+        this.props.getUserDate(this.props.match.params.userId)
+    }
+
+    componentWillUpdate(prevProps, prevState) {console.log(prevProps.selUser.userId)
+    //     if (prevProps.selUser.userId !== this.props.match.params.userId) {
+    //         this.props.getUserDate(this.props.match.params.userId)
+    //     }
     }
 
     render() {
@@ -73,7 +80,7 @@ let mapDispatchToProps = (dispatch) => {
         updatePostText: (text) => dispatch(updatePostText(text)),
         likeForPost: (value) => dispatch(likeForPost(value)),
         selectUser: (user) => dispatch(selectUser(user)),
-        getUserDate: (match, activeIDUser) => dispatch(getUserDate(match, activeIDUser)),
+        getUserDate: (match) => dispatch(getUserDate(match)),
         setStatusUser: (status) => dispatch(setStatusUser(status))
 
 

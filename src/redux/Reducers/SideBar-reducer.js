@@ -26,7 +26,7 @@ const SideBarReducer = (state = initialState, active) => {
         case "UPDATE-PROFILE-URL":
             state.sideBarMenu.map((item) => {
                 if (item.href === "/profile/") {
-                    item.href = item.href + active.idUser
+                    item.href = item.href + active.idUser                
                     return { ...state.sideBarMenu[item.id], ...item };
                 } else {
                     return { ...state.sideBarMenu[item.id] };

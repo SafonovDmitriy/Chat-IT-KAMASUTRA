@@ -1,3 +1,18 @@
-.form{
+.form {
     margin: 25px 10px;
+}
+
+.commonErrorBox {
+    margin: 12px 0px;
+    padding: 5px 0px;
+}
+
+.commonErrorBox span {
+    color: red;
+    color: red;
+    border: solid red 2px;
+    border-radius: 25px;
+    padding: 5px;
+    transition: 1s;
+    background-color: darkblue;
 }

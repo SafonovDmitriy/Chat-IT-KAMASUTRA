@@ -3,6 +3,7 @@ import { updateUrlActive ,updateProfileURL} from '../../redux/Reducers/SideBar-r
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
+import { getUserDate } from '../../redux/Reducers/Profile-reducer.js';
 
 
 
@@ -18,7 +19,8 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     updateUrlActive: (url) => dispatch(updateUrlActive(url)),
-    updateProfileURL:(idUser)=>dispatch(updateProfileURL(idUser))
+    updateProfileURL:(idUser)=>dispatch(updateProfileURL(idUser)),
+    getUserDate:(idUser)=>dispatch(getUserDate(idUser))
   }
 }
 

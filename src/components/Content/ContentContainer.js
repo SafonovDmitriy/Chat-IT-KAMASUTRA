@@ -3,7 +3,7 @@ import { updatePostText, addPost, likeForPost, getUserDate, setStatusUser } from
 import { connect } from 'react-redux';
 
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './Content.module.css'
 import Profile from './Profile/Profile';
 // import NewPost from './NewPost/NewPost';
@@ -18,36 +18,37 @@ import { compose } from 'redux';
 
 
 
-class Content extends React.Component {
 
-    componentWillMount() {
 
-        this.props.getUserDate(this.props.match.params.userId)
-    }
 
-    componentWillUpdate(prevProps, prevState) {console.log(prevProps.selUser.userId)
-    //     if (prevProps.selUser.userId !== this.props.match.params.userId) {
-    //         this.props.getUserDate(this.props.match.params.userId)
-    //     }
-    }
+const Content = ({ match: { params: { userId } }, getUserDate, ...props }) => {
 
-    render() {
-        return this.props.preloader ? <Preloader /> :
-            <>
-                <div className={s.wrapper}>
-                    {/* <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" /> */}
-                    <Profile className={s.Profile}
-                        user={this.props.selUser}
-                        activeIDUser={this.props.activeIDUser}
-                        status={this.props.status}
-                        setStatusUser={(status) => this.props.setStatusUser(status)}
-                    />
+    
 
-                    {/* <NewPost className={s.NewPost}
+    
+    useEffect(() => {
+        getUserDate(userId)
+    }, [userId,getUserDate])
+
+
+
+
+    return props.preloader ? <Preloader /> :
+        <>
+            <div className={s.wrapper}>
+                {/* <img className={s.back} alt="" src="https://www.mayak.zp.ua/images/stories/smi/zp-dk-zavodskiy.jpg" /> */}
+                <Profile className={s.Profile}
+                    user={props.selUser}
+                    activeIDUser={props.activeIDUser}
+                    status={props.status}
+                    setStatusUser={(status) => props.setStatusUser(status)}
+                />
+
+                {/* <NewPost className={s.NewPost}
                 addPost={this.props.addPost}
                 updatePostText={this.props.updatePostText}
             /> */}
-                    {/* <div className={s.Post}>
+                {/* <div className={s.Post}>
                 {this.props.arrPost.map(posts => <Post
                     posts={posts}
                     ProfileDate={this.props.ProfileDate}
@@ -56,9 +57,9 @@ class Content extends React.Component {
                 }
 
             </div> */}
-                </div>
-            </>
-    }
+            </div>
+        </>
+
 
 }
 

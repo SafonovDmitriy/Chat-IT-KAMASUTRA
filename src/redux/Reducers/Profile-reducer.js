@@ -45,6 +45,7 @@ const ProfileReducer = (state = initialState, active) => {
             }
             break;
         case "SELECT-USER":
+
             return { ...state, selectUser: active.user }
 
         case "UPDATE-POST-TEXT":
@@ -96,17 +97,17 @@ export const getUserDate = (userId) => {
         if (userId) {
             dispatch(updatePreloader(true))
             loginAPI.getUserDate(userId).then(responce => {
-
                 dispatch(selectUser({ ...responce, ...responce.contacts, ...responce.photos }))
-
+                dispatch(updatePreloader(false))
             }
             )
 
             UserStatusAPI.getStatus(userId).then(responce2 => {
 
                 dispatch(getUserStatus(responce2.data))
-                dispatch(updatePreloader(false))
+
             })
+
         }
 
 

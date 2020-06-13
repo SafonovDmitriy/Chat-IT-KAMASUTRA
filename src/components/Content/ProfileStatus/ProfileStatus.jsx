@@ -1,46 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import s from './ProfileStatus.module.css'
 
-class ProfileStatus extends React.Component {
-    state = {
-        editMode: false,
-        textStatus: this.props.status
+const ProfileStatus = (props) => {
+    let [editMode, setEditMode] = useState(false)
+    let [status, setStatus] = useState(props.status)
 
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status])
+
+    const activateEditMode = () => {
+        if (props.activeIDUser === props.userId) {
+            setEditMode(true)
+        }
+    }
+    const deactivateEditMode = (e) => {
+
+        props.setStatusUser(e.currentTarget.value)
+
+
+        setEditMode(false)
+    }
+    const updateStatus = (e) => {
+        setStatus(e.currentTarget.value)
     }
 
-    componentDidUpdate(prevProps,prevState) {
-        console.log(prevState)
-    }
-    activateEditMode = () => {
-        if (this.props.activeIDUser === this.props.userId) {
-            this.setState({ editMode: true })
+    return <>
+
+        {
+            !editMode ? <span onDoubleClick={() => activateEditMode()}>{props.status ? status : " newStatus"}</span> :
+                <input autoFocus
+                    value={status} onChange={updateStatus} onBlur={deactivateEditMode} />
+
         }
 
-    }
-    deactivateEditMode = (e) => {
-        if (e.currentTarget.value !== this.state.textStatus) {
-            this.props.setStatusUser(e.currentTarget.value)
-        }
 
-        this.setState({ editMode: false })
-    }
-    updateStatus = (e) => {
-        this.setState({ textStatus: e.currentTarget.value })
-    }
-    render() {
+    </>
 
-        return <>
-
-            {
-                !this.state.editMode ? <span onDoubleClick={() => this.activateEditMode()}>{this.props.status ? this.state.textStatus : "newStatus"}</span> :
-                    <input ref={this.state.statusElement} autoFocus
-                        value={this.state.textStatus} onChange={this.updateStatus} onBlur={this.deactivateEditMode} />
-
-            }
-
-
-        </>
-    }
 
 }
 

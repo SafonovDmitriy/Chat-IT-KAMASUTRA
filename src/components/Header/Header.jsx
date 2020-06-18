@@ -1,6 +1,6 @@
 import React from 'react';
-import s from './Header.module.css'
 import { NavLink, Redirect } from 'react-router-dom';
+import s from './Header.module.css';
 
 
 
@@ -16,7 +16,10 @@ class Header extends React.Component {
     this.props.logOut();
     return <Redirect to="/login/" />
   }
+
   render() {
+
+
     return <div className={s.wrapper}>
       <img className={s.logo} alt="" src="https://volkland.com.ua/sites/all/themes/volkland/logo.png" />
 
@@ -33,15 +36,15 @@ class Header extends React.Component {
 
 
       <div>
-        {this.state.avaBox === true ?
-          <div className={s.loginMenu}>
+        {
+          <div className={this.state.avaBox ? s.loginMenu : s.nonLoginMenu}>
 
             <ul >
               <li onClick={this.logOut}>EXIT</li>
             </ul>
 
 
-          </div> : undefined}
+          </div>}
       </div>
       <div>
         {this.props.isAuth === false ? <NavLink to="/login/">Login</NavLink> :

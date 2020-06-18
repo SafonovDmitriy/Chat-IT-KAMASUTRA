@@ -8,9 +8,7 @@ const SideBar = (props) => {
 
   let href = props.location.pathname
   const reloadProfile=(href)=>{
-    // console.log(props)
     props.updateUrlActive(href)
-    // props.match.params.userId&&props.getUserDate(props.match.params.userId)
   }
   return <div className={s.wrapper}>
 

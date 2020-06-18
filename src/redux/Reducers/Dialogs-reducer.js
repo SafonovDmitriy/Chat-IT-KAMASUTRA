@@ -43,13 +43,7 @@ const DialogsReducer = (state = initialState, active) => {
 
 
 
-export const sandMassageActiveCreator = (message) => ({
-    type: "SAND-MASSAGE",
-    value: message
-})
-export const saveActiveDialogActiveCreator = (value) => ({
-    type: "SAVE-ACTIVE-DIALOG",
-    value: value
-})
+export const sandMassageActiveCreator = (message) => ({ type: "SAND-MASSAGE", value: message })
+export const saveActiveDialogActiveCreator = (value) => ({ type: "SAVE-ACTIVE-DIALOG", value: value })
 
 export default DialogsReducer

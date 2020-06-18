@@ -1,17 +1,15 @@
 
-import { updatePostText, addPost, likeForPost, getUserDate, setStatusUser } from '../../redux/Reducers/Profile-reducer';
-import { connect } from 'react-redux';
-
-
 import React, { useEffect } from 'react';
-import s from './Content.module.css'
-import Profile from './Profile/Profile';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+import { addPost, getUserDate, likeForPost, setStatusUser, updatePostText } from '../../redux/Reducers/Profile-reducer';
 // import NewPost from './NewPost/NewPost';
 // import Post from './Post/Post';
 import Preloader from '../common/Preloader/Preloader';
 import { selectUser } from './../../redux/Reducers/Profile-reducer';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'redux';
+import s from './Content.module.css';
+import Profile from "./Profile/Profile";
 
 
 
@@ -21,15 +19,16 @@ import { compose } from 'redux';
 
 
 
-const Content = ({ match: { params: { userId } }, getUserDate, ...props }) => {
 
-    
 
-    
+const Content = React.memo(({ match: { params: { userId } }, getUserDate, ...props }) => {
+    console.log("Render")
+
+
+
     useEffect(() => {
         getUserDate(userId)
-    }, [userId,getUserDate])
-
+    }, [userId, getUserDate])
 
 
 
@@ -61,7 +60,7 @@ const Content = ({ match: { params: { userId } }, getUserDate, ...props }) => {
         </>
 
 
-}
+})
 
 let mapStateToProps = (state) => {
     return {

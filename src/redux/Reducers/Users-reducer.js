@@ -8,31 +8,25 @@ let initialState = {
 }
 
 const UsersReducer = (state = initialState, active) => {
-    
-    let copyState = { ...state }
+
+    const followUnfollowFlow = (value, userID) => {
+
+        return {
+            ...state, users: state.users.map(u => {
+                return u.id === userID ?
+                    { ...u, followed: value } : { ...u }
+            })
+        }
+    }
+
     switch (active.type) {
 
         case "FOLLOW":
-            copyState = {
-                ...state, users: state.users.map(u => {
-                    if (u.id === active.userId) {
-                        return { ...u, followed: true }
-                    }
-                    return u
-                })
-            }
-            break;
+            return followUnfollowFlow(true, active.userId)
+
         case "UNFOLLOW":
-        
-            copyState = {
-                ...state, users: state.users.map(u => {
-                    if (u.id === active.userId) {
-                        return { ...u, followed: false }
-                    }
-                    return u
-                })
-            }
-            break;
+            return followUnfollowFlow(false, active.userId)
+
         case "SET_USERS":
             {
                 return { ...state, users: active.users }
@@ -61,10 +55,8 @@ const UsersReducer = (state = initialState, active) => {
             }
 
 
-        default: return copyState;
+        default: return { ...state };
     }
-
-    return copyState;
 }
 
 export const follow = (userId) => ({ type: 'FOLLOW', userId: userId })
@@ -77,37 +69,29 @@ export const updateFollowing = (followingInProgress, idUser) => ({ type: 'UPDATE
 
 
 export const getUsers = (countPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(updatePage(countPage))
         dispatch(updatePreloader(true));
-        UsersAPI.getUsers(countPage, pageSize).then(response => {
-            dispatch(updatePreloader(false));
-            dispatch(updateTotalCount(response.totalCount))
-            dispatch(setUsers(response.items))
-        }
-        )
+        let response = await UsersAPI.getUsers(countPage, pageSize)
+        dispatch(updatePreloader(false));
+        dispatch(updateTotalCount(response.totalCount))
+        dispatch(setUsers(response.items))
     }
 }
 export const followT = (idUser) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(updateFollowing(true, idUser))
-        subscribeAPI.postFollow(idUser).then(response => {
-            if (response.resultCode === 0) {
-                dispatch(follow(idUser))
-            }
-            dispatch(updateFollowing(false, idUser))
-        })
+        let response = await subscribeAPI.postFollow(idUser)
+        if (response.resultCode === 0) { dispatch(follow(idUser)) }
+        dispatch(updateFollowing(false, idUser))
     }
 }
 export const unfollowT = (idUser) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(updateFollowing(true, idUser))
-        subscribeAPI.deleteFollow(idUser).then(response => {
-            if (response.resultCode === 0) {
-                dispatch(unfollow(idUser))
-            }
-            dispatch(updateFollowing(false, idUser))
-        })
+        let response = await subscribeAPI.deleteFollow(idUser)
+        if (response.resultCode === 0) { dispatch(unfollow(idUser)) }
+        dispatch(updateFollowing(false, idUser))
     }
 }
 

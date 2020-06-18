@@ -1,26 +1,27 @@
-.wrapper{
+.wrapper {
   border: 1px solid black;
   padding: 5px;
-    display: grid;
+  display: grid;
   grid-template-rows: 350px 300px 300px 1fr;
-  grid-template-areas: 
-  "b"
-  "p"
-  "n"
-  "post";
+  grid-template-areas: "b" "p" "n" "post";
 }
-img.back{
-    margin: 2px;
-    grid-area: b;
-    width: 100%;
-    height: 100%;
+
+img.back {
+  grid-area: b;
+  margin: 2px;
+  width: 100vw;
+  height: 100%;
+  /* clip-path: polygon(0% 21%, 82% 7%, 100% 46%, -9% 105%, 22% 61%); */
 }
-.Profile{
+
+.Profile {
   grid-area: p;
 }
-.NewPost{
+
+.NewPost {
   grid-area: n;
 }
-.Post{
+
+.Post {
   grid-area: post;
 }

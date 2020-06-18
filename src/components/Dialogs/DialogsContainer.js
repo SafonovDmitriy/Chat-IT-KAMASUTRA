@@ -1,8 +1,8 @@
-import { sandMassageActiveCreator, saveActiveDialogActiveCreator } from '../../redux/Reducers/Dialogs-reducer';
-import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
-import { withAuthRedirect } from './../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import { sandMassageActiveCreator, saveActiveDialogActiveCreator } from '../../redux/Reducers/Dialogs-reducer';
+import { withAuthRedirect } from './../../hoc/withAuthRedirect';
+import Dialogs from './Dialogs';
 
 
 let mapStateToProps = (state) => {

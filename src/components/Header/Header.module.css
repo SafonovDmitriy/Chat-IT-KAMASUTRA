@@ -29,17 +29,41 @@
     display: inline-flex;
 }
 
-
-
 .loginMenu {
-    grid-area: list;
-    border: solid 1px rgb(211, 144, 1);
-    border-radius: 5px;
-    margin-top: 15px;
+    opacity: 1;
+    visibility: visible;
 }
 
-.loginMenu li {
+.nonLoginMenu {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.nonLoginMenu, .loginMenu {
+    display: inline-table;
+    background-color: black;
+    grid-area: list;
+    height: 50px;
+    /* border: solid 1px rgb(211, 144, 1); */
+    margin-top: 15px;
+    transition: 1s;
+    border-bottom: solid 2px rgb(211, 144, 1);
+    border-top: solid 2px rgb(211, 144, 1);
+    border-radius: 20px;
+
+}
+
+.loginMenu li, .nonLoginMenu li {
     width: 50px;
+    color: gold;
+    margin: auto 25px 0px -8px;
+}
+
+l.loginMenu li:hover, .nonLoginMenu li:hover {
+    background-color: black;
+    transition: 0.2s;
+    border-color: crimson;
+    color: crimson;
 }
 
 .loginMenu a {

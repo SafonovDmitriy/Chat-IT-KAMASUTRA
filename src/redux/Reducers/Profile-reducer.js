@@ -49,6 +49,7 @@ const ProfileReducer = (state = initialState, active) => {
             return { ...state, selectUser: active.user }
 
         case "UPDATE-POST-TEXT":
+           
             copyState.NewPostText = active.value;
             break;
         case "UPDETE-PRELOADER":
@@ -92,40 +93,23 @@ export const getUserStatus = (status) => ({ type: "GET-USER-STATUS", status: sta
 
 export const getUserDate = (userId) => {
 
-    return (dispatch) => {
-
+    return async (dispatch) => {
         if (userId) {
             dispatch(updatePreloader(true))
-            loginAPI.getUserDate(userId).then(responce => {
-                dispatch(selectUser({ ...responce, ...responce.contacts, ...responce.photos }))
-                dispatch(updatePreloader(false))
-            }
-            )
-
-            UserStatusAPI.getStatus(userId).then(responce2 => {
-
-                dispatch(getUserStatus(responce2.data))
-
-            })
-
+            let responce = await loginAPI.getUserDate(userId)
+            dispatch(selectUser({ ...responce, ...responce.contacts, ...responce.photos }))
+            dispatch(updatePreloader(false))
+            responce = await UserStatusAPI.getStatus(userId)
+            dispatch(getUserStatus(responce.data))
         }
-
-
-
-
-
-
     }
 }
 export const setStatusUser = (status) => {
-    return (dispatch) => {
-        UserStatusAPI.setStatus(status).then(responce => {
-            if (responce.data.resultCode === 0) {
-                dispatch(getUserStatus(status))
-
-            }
-
-        })
+    return async (dispatch) => {
+        let responce = await UserStatusAPI.setStatus(status)
+        if (responce.data.resultCode === 0) {
+            dispatch(getUserStatus(status))
+        }
     }
 }
 

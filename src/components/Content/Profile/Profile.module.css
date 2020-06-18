@@ -1,23 +1,30 @@
-.wrapper{
-    display: grid;
-grid-template-columns: 350px 1fr;
-grid-template-rows: 1fr;
-  grid-template-areas: 
-  "p i";
-  
- 
+.wrapper {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "p i";
 }
-.photo{
+
+.photo {
   grid-area: p;
   height: 100%;
- text-align: center;
+  text-align: center;
+}
+
+.photo img {
+  width: 65%;
+  margin-top: 40px;
+  transition: 2s;
+}
+
+.photo img:hover {
+  transform: rotate(360deg) scale(1.5);
+  margin-top: 65px;
+  transition: 0.7s;
  
 }
-.photo img {
-  width: 60%;
-  margin-top: 40px;
-}
-.info{
+
+.info {
   grid-area: i;
   margin: 10px;
   padding-left: 15px;

@@ -1,19 +1,20 @@
-import React from 'react';
+import React ,{Component}from 'react';
 import { connect } from 'react-redux';
 import { followT, unfollowT, getUsers } from '../../redux/Reducers/Users-reducer';
 import { getUserStatus } from '../../redux/Reducers/Profile-reducer'
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader.jsx';
 
-class UsersContainer extends React.Component {
+class UsersContainer extends Component {
 
     componentDidMount() {
 
         this.props.getUsers(this.props.urlPage.countPage, this.props.urlPage.pageSize)
     }
 
-
+   
     render() {
+        console.log("Render")
         return <>
             {this.props.preloaded ? <Preloader /> : <Users
                 urlPage={this.props.urlPage}
@@ -23,7 +24,7 @@ class UsersContainer extends React.Component {
                 updatePage={(int) => this.props.getUsers(int, this.props.urlPage.pageSize)}
                 follow={(idUser) => this.props.followT(idUser)}
                 unfollow={(idUser) => this.props.unfollowT(idUser)}
-                getUserStatus={(status)=>this.props.getUserStatus(status)}
+                getUserStatus={(status) => this.props.getUserStatus(status)}
 
             />}
 
